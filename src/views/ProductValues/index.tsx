@@ -48,6 +48,7 @@ const styles = (theme: Theme) =>
   });
 
 export interface ProductValuesProps {
+  title?: string;
   values: Array<{
     img: string;
     name: string;
@@ -56,10 +57,9 @@ export interface ProductValuesProps {
   }>;
 }
 
-const ProductValues: React.SFC<
-  ProductValuesProps & WithStyles<typeof styles>
-> = (props) => {
-  const { classes, values } = props;
+const ProductValues: React.SFC<ProductValuesProps &
+  WithStyles<typeof styles>> = (props) => {
+  const { classes, values, title } = props;
   return (
     <section className={classes.root}>
       <Container className={classes.container}>
@@ -68,7 +68,15 @@ const ProductValues: React.SFC<
           className={classes.curvyLines}
           alt="curvy lines"
         />
+
         <Grid container spacing={5}>
+          {title && (
+            <Grid item xs={12} md={12}>
+              <MuiTypography variant="h4" marked="center" align="center">
+                {title}
+              </MuiTypography>
+            </Grid>
+          )}
           {values.map((element, index) => (
             <Grid key={element.name + index.toString()} item xs={12} md={4}>
               <div className={classes.item}>
