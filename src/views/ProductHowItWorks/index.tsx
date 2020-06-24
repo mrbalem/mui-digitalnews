@@ -7,13 +7,14 @@ export interface ProductHowItWorksProps {
   title: string;
   redired: string;
   process: Array<{ img: string; alt: string; description: string }>;
+  id?: string;
 }
 
 const ProductHowItWorks: React.SFC<ProductHowItWorksProps> = (props) => {
   const classes = useProductHowItWorksStyle();
-  const { title, process, redired } = props;
+  const { title, id, process, redired } = props;
   return (
-    <section className={classes.root}>
+    <section id={id} className={classes.root}>
       <Container className={classes.container}>
         <img
           src="/static/img/productCurvyLines.png"
