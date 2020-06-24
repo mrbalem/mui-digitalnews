@@ -1,0 +1,23 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import ProductCTA from "./index";
+
+<Meta title="CTA" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="Default">
+    <ProductCTA
+    title="recibe ofertas"
+    description="Prueba las vacaciones de todos los días cerca de casa."
+    portada="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
+    onSubmit={() => new Promise((res) => res(true))}
+  />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={ProductCTA} />

@@ -1,0 +1,22 @@
+
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import ProductHero from "./index";
+
+<Meta title="Portada" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="Default">
+<ProductHero
+    title="actualiza tus domingos"
+    description="Disfrute de ofertas secretas de hasta -70% de descuento en los mejores hoteles de lujo todos los domingos."
+  />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={ProductHero} />

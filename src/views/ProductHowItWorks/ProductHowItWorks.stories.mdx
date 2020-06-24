@@ -1,0 +1,40 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import ProductHowItWorks from "./index";
+
+<Meta title="ProductHowItWorks" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="Default">
+   <ProductHowItWorks
+    redired="/#"
+    title="cómo funciona"
+    process={[
+      {
+        description: "Cita todos los miércoles a las 9 a.m.",
+        alt: "dasd",
+        img: "/static/img/productHowItWorks1.svg",
+      },
+      {
+        description:
+          "Primero llegado, primero servido. Nuestras ofertas son en cantidades limitadas, así que sea rápido.",
+        alt: "dasd",
+        img: "/static/img/productHowItWorks2.svg",
+      },
+      {
+        description:
+          "Nuevas ofertas cada semana. Nuevas experiencias, nuevas sorpresas. Tus domingos ya no serán iguales.",
+        alt: "dasd",
+        img: "/static/img/productHowItWorks3.svg",
+      },
+    ]}
+  />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={ProductHowItWorks} />

@@ -1,26 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+/**
+ *  @version 1.0.0
+ *  @author Rony cb - Mrvalem
+ *  @description Punto de Entrada de la aplicación
+ * 	@process 2
+ */
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import React from "react";
+import Routes from "./routes";
+import { HelmetProvider } from "react-helmet-async";
+
+const App = () => (
+  <div className="App">
+    <HelmetProvider>
+      <Routes />
+    </HelmetProvider>
+  </div>
+);
 
 export default App;

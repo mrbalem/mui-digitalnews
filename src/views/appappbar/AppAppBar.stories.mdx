@@ -1,0 +1,26 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+
+import AppAppBar from "./index";
+
+<Meta title="AppBar" />
+
+Here's some _markdown_!
+
+# Preview
+
+<Preview>
+  <Story name="Default">
+    <AppAppBar
+      title="gridmall"
+      position="fixed"
+      rightItem={[
+        { link: "/#", name: "iniciar" },
+        { link: "/#", name: "regístrate" },
+      ]}
+    />
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={AppAppBar} />
