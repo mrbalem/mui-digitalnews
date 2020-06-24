@@ -13,6 +13,7 @@ const backgroundImage =
 export interface ProductHeroProps {
   title: string;
   description: string;
+  backgroundProtada?: string;
 }
 
 /**
@@ -23,7 +24,9 @@ export interface ProductHeroProps {
  */
 
 const ProductHero: React.SFC<ProductHeroProps> = (props) => {
-  const classes = useProductHeroStyle({ backgroundImage: backgroundImage });
+  const classes = useProductHeroStyle({
+    backgroundImage: props.backgroundProtada || backgroundImage,
+  });
   const { title, description } = props;
   return (
     <ProductHeroLayout
