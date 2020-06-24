@@ -9,13 +9,7 @@ import AppAppBar from "../../views/appappbar";
 import ProductHero from "../../views/ProductHero";
 import ProductValues from "../../views/ProductValues";
 import ProductCategories from "../../views/ProductCategories";
-import prueba from "../prueba.svg";
-import productValues2 from "../productValues2.svg";
-import productValues3 from "../productValues2.svg";
 import ProductHowItWorks from "../../views/ProductHowItWorks";
-import productHowItWorks1 from "../productHowItWorks1.svg";
-import productHowItWorks2 from "../productHowItWorks2.svg";
-import productHowItWorks3 from "../productHowItWorks3.svg";
 import ProductCTA from "../../views/ProductCTA";
 import ProductSmokingHero from "../../views/ProductSmokingHero";
 import AppFooter from "../../views/AppFooter";
@@ -44,21 +38,21 @@ const PageHome: React.SFC<PageHomeProps> = () => {
             description:
               "Desde el último hotel boutique de moda hasta el emblemático palacio con piscina XXL , vaya de vacaciones a unas pocas paradas de metro de su hogar.",
             alt: "hoteles",
-            img: prueba,
+            img: "/static/img/prueba.svg",
           },
           {
             name: "nuevas experiencias",
             description:
               "Privatice una piscina, tome un baño japonés o despiértese en un jardín de 900 m2 ... sus domingos no serán iguales.",
             alt: "experiencia",
-            img: productValues2,
+            img: "/static/img/productValues2.svg",
           },
           {
             name: "TARIFAS EXCLUSIVAS",
             description:
               "Al registrarse, accederá a tarifas negociadas especialmente que no encontrará en ningún otro lugar.",
             alt: "trifas",
-            img: productValues3,
+            img: "/static/img/productValues3.svg",
           },
         ]}
       />
@@ -128,19 +122,19 @@ const PageHome: React.SFC<PageHomeProps> = () => {
           {
             description: "Cita todos los miércoles a las 9 a.m.",
             alt: "dasd",
-            img: productHowItWorks1,
+            img: "/static/img/productHowItWorks1.svg",
           },
           {
             description:
               "Primero llegado, primero servido. Nuestras ofertas son en cantidades limitadas, así que sea rápido.",
             alt: "dasd",
-            img: productHowItWorks2,
+            img: "/static/img/productHowItWorks2.svg",
           },
           {
             description:
               "Nuevas ofertas cada semana. Nuevas experiencias, nuevas sorpresas. Tus domingos ya no serán iguales.",
             alt: "dasd",
-            img: productHowItWorks3,
+            img: "/static/img/productHowItWorks3.svg",
           },
         ]}
       />
