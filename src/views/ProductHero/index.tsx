@@ -14,6 +14,7 @@ export interface ProductHeroProps {
   title: string;
   description: string;
   backgroundProtada?: string;
+  href?: string;
 }
 
 /**
@@ -27,7 +28,7 @@ const ProductHero: React.SFC<ProductHeroProps> = (props) => {
   const classes = useProductHeroStyle({
     backgroundImage: props.backgroundProtada || backgroundImage,
   });
-  const { title, description } = props;
+  const { title, description, href } = props;
   return (
     <ProductHeroLayout
       wonder={{ url: productHeroWonder, alt: "dfsdf" }}
@@ -60,7 +61,7 @@ const ProductHero: React.SFC<ProductHeroProps> = (props) => {
         variant="contained"
         size="large"
         className={classes.button}
-        href="/#comenzar"
+        href={href || "/#"}
       >
         comenzar
       </MuiButton>
