@@ -1,13 +1,13 @@
-import WithRoot from "../../libs/withroot";
+import WithRoot from "../../../libs/withroot";
 import * as React from "react";
-import AppAppBar from "../../views/appappbar";
-import ProductHero from "../../views/ProductHero";
-import ProductValues from "../../views/ProductValues";
-import ProductCategories from "../../views/ProductCategories";
-import ProductHowItWorks from "../../views/ProductHowItWorks";
-import ProductCTA from "../../views/ProductCTA";
-import ProductSmokingHero from "../../views/ProductSmokingHero";
-import AppFooter from "../../views/AppFooter";
+import AppAppBar from "../../../views/appappbar";
+import ProductHero from "../../../views/ProductHero";
+import ProductValues from "../../../views/ProductValues";
+import ProductCategories from "../../../views/ProductCategories";
+import ProductHowItWorks from "../../../views/ProductHowItWorks";
+import ProductCTA from "../../../views/ProductCTA";
+import ProductSmokingHero from "../../../views/ProductSmokingHero";
+import AppFooter from "../../../views/AppFooter";
 
 export interface PageHomeProps {}
 
