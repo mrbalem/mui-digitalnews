@@ -2,7 +2,20 @@
   "name": "mui-digitalnews",
   "version": "0.0.1",
   "private": true,
+  "email": "ronycarhuas20@gmail.com",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "description": "A collection of ready-to-use components based on Material-UI",
   "homepage": "https://github.com/mrbalem/mui-digitalnews.git",
+  "keywords": [
+    "material ui",
+    "front end",
+    "developer",
+    "mui-tresury",
+    "design",
+    "type-script",
+    "digitalnews"
+  ],
   "dependencies": {
     "@material-ui/core": "^4.10.2",
     "@material-ui/icons": "^4.9.1",
