@@ -1,3 +1,5 @@
+import request from "superagent";
+
 /**
  *  @version 1.0.0
  *  @author ROny cb - Mrvalem
@@ -5,9 +7,6 @@
  *  @param {String} url: "/EndPoint"
  *  @param {Object} data: Payload
  */
-
-import request from "superagent";
-
 export default class Request {
   // web API url
   private baseUrl: string;
