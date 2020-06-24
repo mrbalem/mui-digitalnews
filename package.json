@@ -6,7 +6,6 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "description": "A collection of ready-to-use components based on Material-UI",
-  "homepage": "https://github.com/mrbalem/mui-digitalnews.git",
   "keywords": [
     "material ui",
     "front end",
