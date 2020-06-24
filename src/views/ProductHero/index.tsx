@@ -60,9 +60,9 @@ const ProductHero: React.SFC<ProductHeroProps> = (props) => {
         variant="contained"
         size="large"
         className={classes.button}
-        href="/premium-themes/onepirate/sign-up/"
+        href="/#comenzar"
       >
-        Register
+        comenzar
       </MuiButton>
       <MuiTypography variant="body2" color="inherit" className={classes.more}>
         Descubre la experiencia
