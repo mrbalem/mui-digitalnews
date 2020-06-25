@@ -18,8 +18,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export interface AppFormProps {
+  /**
+   * Children components
+   */
   children: React.ReactNode;
 }
+
+/**
+ * @author DigitalNews
+ * @version 1.0.9
+ * @description component AppForm
+ */
 
 const AppForm: React.SFC<AppFormProps> = (props) => {
   const classes = useStyles();
