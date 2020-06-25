@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 /**
  * @description Incorporación de todas las rutas
  */
-import { HomeGirdMall } from "../zviewsgridmall";
+import { HomeGirdMall, RegisterGridMall } from "../zviewsgridmall";
 import Privacy from "../xample/Privacy";
 import Terms from "../xample/Terms";
 import ThemeTwo from "../xample/ThemeTwo";
@@ -25,6 +25,7 @@ const Routes = () => (
       <div className="column full">
         <Switch>
           <Route path="/" exact component={HomeGirdMall} />
+          <Route path="/register/:id" exact component={RegisterGridMall} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
           <Route path="/themetwo" exact component={ThemeTwo} />
