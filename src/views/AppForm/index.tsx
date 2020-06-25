@@ -6,7 +6,7 @@ import { MuiPaper } from "../../components";
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    backgroundImage: "url(/static/img/appCurvyLines.png)",
+    backgroundImage: "url(/static/img/productCurvyLines.png)",
     backgroundRepeat: "no-repeat",
   },
   paper: {
@@ -35,7 +35,7 @@ const AppForm: React.SFC<AppFormProps> = (props) => {
   const { children } = props;
   return (
     <div className={classes.root}>
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box mt={7} mb={12}>
           <MuiPaper className={classes.paper}>{children}</MuiPaper>
         </Box>
