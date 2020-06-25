@@ -7,16 +7,36 @@ import {
   WithStyles,
   Paper,
   PaperProps,
-  capitalize,
+  withStyles,
 } from "@material-ui/core";
+
+// interface ColorsMapping {
+//   light: string;
+//   main: string;
+//   dark: string;
+//   [key: string]: any;
+// }
+
+// interface Styles {
+//   background?: string;
+//   children?: React.ReactNode;
+//   [key: string]: any;
+// }
+
+// const styledBy = (property: string, mapping: ColorsMapping) => (
+//   props: Styles
+// ) => mapping[props[property]];
 
 // styles MuiPaper
 
 const styles = (theme: Theme) =>
   createStyles({
-    backgroundLight: {
-      backgroundColor: theme.palette.secondary.light,
-    },
+    // backgroundLight: styledBy("background", {
+    //   light: theme.palette.secondary.light,
+    //   main: theme.palette.secondary.main,
+    //   dark: theme.palette.secondary.dark,
+    // }),
+    backgroundLight: { backgroundColor: theme.palette.secondary.light },
     backgroundMain: {
       backgroundColor: theme.palette.secondary.main,
     },
@@ -36,15 +56,15 @@ export interface MuiPaperProps extends PaperProps {
   /**
    * defined background for paper
    */
-  background: "light" | "main" | "dark";
+  background?: "light" | "main" | "dark";
   /**
    * defined classname for paper
    */
-  className: string;
+  className?: string;
   /**
    * defined padding for paper
    */
-  padding: boolean;
+  padding?: boolean;
 }
 
 /**
@@ -65,30 +85,22 @@ const MuiPaper: React.SFC<MuiPaperProps & WithStyles<typeof styles>> = (
     ...other
   } = props;
 
-  const _getBackground = (background: "light" | "main" | "dark") => {
-    switch (background) {
-      case "dark":
-        return "backgroundLight";
-      case "light":
-        return "backgroundMain";
-      case "main":
-        return "backgroundDark";
-      default:
-        return "backgroundLight";
-    }
-  };
-
   return (
     <Paper
       elevation={0}
       square
-      {...other}
       className={clsx(
+        {
+          [classes.backgroundDark]: background === "dark",
+          [classes.backgroundMain]: background === "main",
+          [classes.backgroundLight]: background === "light",
+        },
         //classes[`background${_getBackground(background)}`],
         { [classes.padding]: padding },
         className
       )}
+      {...other}
     />
   );
 };
-export default MuiPaper;
+export default withStyles(styles)(MuiPaper);
