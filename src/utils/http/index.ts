@@ -1,6 +1,20 @@
 import request from "superagent";
 
 /**
+ * @param String name
+ * @return String
+ * @description esta funcion nos permite obtener los valores de una url en especifica.
+ */
+export function getParameter(name: string) {
+  name = name.replace(/[[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    results = regex.exec(window.location.search);
+  return results === null
+    ? ""
+    : window.decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+/**
  *  @version 1.0.0
  *  @author ROny cb - Mrvalem
  *  @description Cliente HTTP para todas las peticiones Web basada en superagent: GET, POST, DELETE, PUT, PATCH
