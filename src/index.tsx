@@ -10,9 +10,50 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
+/**
+ * config apollo tools
+ * removing if no use for proyect
+ */
+import { HttpLink } from "apollo-link-http";
+import { onError } from "apollo-link-error";
+import { ApolloClient } from "apollo-client";
+import { InMemoryCache } from "apollo-cache-inmemory";
+import { ApolloProvider } from "@apollo/react-hooks";
+
+//capture error for consult graphql
+const errorLink = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors) {
+    //[*] capture error for grap existen en query, mutation or suscription
+    graphQLErrors.forEach(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message ${message}, location: ${locations}, Path: ${path}`
+      )
+    );
+
+    //[*] capture error for netword
+    if (networkError) console.log(`[*]NetWork error : ${networkError}`);
+  }
+});
+
+//[*] link server graphql
+const link = new HttpLink({
+  uri: "https://cryptic-refuge-32742.herokuapp.com/graphql/inkmarket",
+});
+
+//[*] cache for data graphql
+const cache = new InMemoryCache();
+
+//[*] config client apollo client.
+const client = new ApolloClient({
+  link: HttpLink.from([errorLink, link]),
+  cache,
+});
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
