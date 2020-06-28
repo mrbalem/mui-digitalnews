@@ -43,15 +43,23 @@ const ProductHowItWorks: React.SFC<ProductHowItWorksProps> = (props) => {
             ))}
           </Grid>
         </div>
-        <MuiButton
-          color="secondary"
-          size="large"
-          variant="contained"
-          className={classes.button}
-          href={redired}
+        <div
+          style={{
+            width: "100%",
+            justifyContent: "center",
+            display: "flex",
+          }}
         >
-          empezar
-        </MuiButton>
+          <MuiButton
+            color="secondary"
+            size="large"
+            variant="contained"
+            className={classes.button}
+            href={redired}
+          >
+            empezar
+          </MuiButton>
+        </div>
       </Container>
     </section>
   );

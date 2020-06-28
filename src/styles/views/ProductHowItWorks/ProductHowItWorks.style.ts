@@ -23,6 +23,7 @@ const ProductHowItWorksStyle = (theme: Theme) =>
     },
     title: {
       marginBottom: theme.spacing(14),
+      textAlign: "center",
     },
     number: {
       fontSize: 24,
