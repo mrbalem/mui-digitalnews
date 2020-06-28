@@ -20,14 +20,14 @@ export interface WithRootProps {
    */
   actions: any;
   /**
-   * Permitimos props personalisados para nuectro Component
+   * Permitimos props personalisados para nuestro Component
    */
   [key: string]: any;
 }
 
 const connect = (Component: React.SFC<WithRootProps>) => {
   /**
-   * @param props Contiene el histirial de rutas y los pasamos a nuestro componente.
+   * @param props Contiene el historial de rutas y los pasamos a nuestro componente.
    * @description Retornamos un componente SFC para no tener confictos con React.Router
    */
   const Connect: React.SFC<any> = (props) => {

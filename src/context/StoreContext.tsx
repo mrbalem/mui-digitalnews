@@ -27,7 +27,7 @@ const StoreProvider: React.SFC<StoreProviderProps> = (props) => {
   // also debuggin develoment state, remove for production.
   useEffect(() => {
     console.log({ newState: state });
-  }, []);
+  }, [state]);
 
   // Render state, dispatch and special case actions
   return (
