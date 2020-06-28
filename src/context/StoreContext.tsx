@@ -24,8 +24,7 @@ const StoreProvider: React.SFC<StoreProviderProps> = (props) => {
   const actions = useActions(state, dispatch);
 
   const value = { state, dispatch, actions };
-  // Fetch the token from storage then navigate to our appropriate place
-  // Log new state
+  // also debuggin develoment state, remove for production.
   useEffect(() => {
     console.log({ newState: state });
   }, []);
