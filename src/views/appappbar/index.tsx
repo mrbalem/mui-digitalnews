@@ -30,6 +30,7 @@ export interface AppAppBarProps {
  * AppAppBar componenent.
  */
 const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
+  console.log("componentClidren", props);
   const classes = useAppAppBarStyles({ titleSize: 24 });
   //[*] get classes
   const { title, color, rightItem, position = "static" } = props;

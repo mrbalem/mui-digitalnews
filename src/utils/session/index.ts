@@ -4,14 +4,13 @@
  *  @description Manejo de sesión de usuario
  */
 
+import { useContext } from "react";
+import { StoreContext } from "../../context/StoreContext";
+
 /**
  * @description: Función para obtener validar la sesisón de usuario: CONFIGURARA A NECESIDAD
  */
-export const verifySession = () => {
-  const data = localStorage.getItem("session_token");
-  if (data) {
-    return true;
-  } else {
-    return false;
-  }
+export const useVerifySession = () => {
+  const { state } = useContext(StoreContext);
+  return state.isLogin;
 };

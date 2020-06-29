@@ -8,6 +8,7 @@ import styleProductHowItWorks, {
 } from "./views/ProductHowItWorks";
 import styleProductCta, { useProductCtaStyle } from "./views/ProductCTA";
 import styleAppFooter, { useAppFooterStyle } from "./views/AppFooter";
+import styleSignIn, { useSignInStyles } from "./views/SingIn";
 export {
   styleProductCta,
   styleProductCategoria,
@@ -21,4 +22,6 @@ export {
   useProductCtaStyle,
   styleAppFooter,
   useAppFooterStyle,
+  useSignInStyles,
+  styleSignIn,
 };
