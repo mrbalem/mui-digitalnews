@@ -4,24 +4,27 @@
  *  @description Manejo de todas las rutas privadas
  */
 import React from "react";
-import { verifySession } from "../utils/session";
-import { Route, Redirect } from "react-router-dom";
+import { useVerifySession } from "../utils/session";
+import { Route, Redirect, RouteProps } from "react-router-dom";
 
-export interface PrivateRouterProps {
+type RouterPropsOmit = Omit<RouteProps, "render" | "component">;
+
+export interface PrivateRouterProps extends RouterPropsOmit {
   component: React.SFC<any>;
-  [x: string]: any;
 }
 
 const PrivateRouter: React.SFC<PrivateRouterProps> = (props) => {
-  const { component: Component, rest } = props;
+  const { component: Component, ...rest } = props;
+  //[*] hoooks para verificar si existe una sessión en nuestro aplicativo
+  const isLogin = useVerifySession();
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (verifySession()) {
+        if (isLogin) {
           return <Component {...props} />;
         } else {
-          return <Redirect to="/" />;
+          return <Redirect to="/sign-in" />;
         }
       }}
     />
