@@ -16,11 +16,12 @@ const cover =
 
 export interface SingInProps {
   portada: { title: string; subtitle: string; message: string };
+  cover?: string;
   title: string;
 }
 
 const SingIn: React.SFC<SingInProps> = (props) => {
-  const classes = useSignInStyles({ cover: cover });
+  const classes = useSignInStyles({ cover: props.cover || cover });
   const { portada, title } = props;
   return (
     <Grid className={classes.root} container>
@@ -81,14 +82,14 @@ const SingIn: React.SFC<SingInProps> = (props) => {
             form={[
               {
                 name: "username",
-                label: "Username",
+                label: "Correo",
                 md: 12,
                 validation: true,
                 type: "email",
               },
               {
                 name: "password",
-                label: "Password",
+                label: "Contraseña",
                 md: 12,
                 validation: true,
                 type: "password",
@@ -110,7 +111,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
                   variant={"contained"}
                   color={"primary"}
                 >
-                  Log in
+                  Ingresar
                 </Button>
               </FormControl>
             )}
