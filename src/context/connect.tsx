@@ -1,6 +1,18 @@
 import React from "react";
 import { StoreContext } from "./StoreContext";
 import { state } from "./Reducer";
+import { RouteComponentProps } from "react-router-dom";
+
+export interface WithRootConnet extends RouteComponentProps {
+  /**
+   * Recivimos los estados de StoreContext
+   */
+  state: state;
+  /**
+   * Establecemos las accion para nuestro componentes
+   */
+  actions: any;
+}
 
 /**
  * @version 1.0.0
@@ -10,27 +22,14 @@ import { state } from "./Reducer";
  * nuestras paginas o componentes
  */
 
-export interface WithRootProps {
+const connect = (Component: React.SFC<WithRootConnet>) => {
   /**
-   * Recivimos los estados del Reducer
+   * @interface RouteComponentProps contiene history, location y match props
+   * @param props recuperamos los valores de la interface y se lo pasamos a nuestro componente.
+   * @description Esta Componente nos permite Recuperar los props de react router dom y pasarselo
+   * a nuestro componente conectado.
    */
-  state: state;
-  /**
-   * Establecemos las accion para nuestro componentes
-   */
-  actions: any;
-  /**
-   * Permitimos props personalisados para nuestro Component
-   */
-  [key: string]: any;
-}
-
-const connect = (Component: React.SFC<WithRootProps>) => {
-  /**
-   * @param props Contiene el historial de rutas y los pasamos a nuestro componente.
-   * @description Retornamos un componente SFC para no tener confictos con React.Router
-   */
-  const Connect: React.SFC<any> = (props) => {
+  const Connect: React.SFC<RouteComponentProps> = (props) => {
     /**
      * recuperamos los estados y actions de nuestro Store Context
      */
