@@ -22,18 +22,24 @@ export interface AppAppBarProps {
    * The color of the component. It supports those theme colors that make sense for this component.
    */
   color?: "inherit" | "transparent" | "default" | "primary" | "secondary";
+  /**
+   * Especifica la posicion de los items de nav
+   */
+  centerItems?: Array<{ link: string; name: string }>;
 }
 
 /**
  * @author Rony cb
- * @version 1.0.0
+ * @version 1.0.1
  * AppAppBar componenent.
  */
 const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
-  console.log("componentClidren", props);
+  //console.log("componentClidren", props);
   const classes = useAppAppBarStyles({ titleSize: 24 });
   //[*] get classes
-  const { title, color, rightItem, position = "static" } = props;
+  const { title, color, rightItem, centerItems, position = "static" } = props;
+  //[*] hooks active link
+  const [actived, setActive] = React.useState(0);
   return (
     <div>
       <MuiAppBar color={color} position={position}>
@@ -66,8 +72,36 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
             ))}
           </div>
         </MuiToolbar>
+        {centerItems && (
+          <div className={classes.nav}>
+            <div className={classes.left} />
+            {centerItems.map((ele, index) => (
+              <Link
+                key={ele.name + index.toString()}
+                color="inherit"
+                variant="h6"
+                underline="none"
+                onClick={() => setActive(index)}
+                href={ele.link}
+                className={clsx(
+                  classes.rightLink,
+                  actived === index && classes.linkSecondary
+                )}
+              >
+                {ele.name}
+              </Link>
+            ))}
+            <div className={classes.right} />
+          </div>
+        )}
       </MuiAppBar>
-      {position === "fixed" && <div className={classes.placeholder} />}
+      {position === "fixed" && (
+        <div
+          className={clsx(
+            centerItems ? classes.heightNav : classes.placeholder
+          )}
+        />
+      )}
     </div>
   );
 };

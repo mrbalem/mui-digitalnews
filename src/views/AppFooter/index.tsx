@@ -14,7 +14,7 @@ function Copyright() {
     <React.Fragment>
       {"© "}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        ink-grid
       </Link>{" "}
       {new Date().getFullYear()}
     </React.Fragment>

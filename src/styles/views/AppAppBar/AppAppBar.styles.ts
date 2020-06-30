@@ -35,6 +35,19 @@ const AppAppBarStyles = (theme: Theme) => {
     linkSecondary: {
       color: theme.palette.secondary.main,
     },
+    nav: {
+      display: "flex",
+      paddingBottom: 10,
+      [theme.breakpoints.down("xs")]: {
+        display: "none",
+      },
+    },
+    heightNav: {
+      height: 105,
+      [theme.breakpoints.down("xs")]: {
+        height: 64,
+      },
+    },
   };
 };
 
