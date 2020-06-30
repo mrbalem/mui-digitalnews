@@ -9,11 +9,20 @@ import styleProductHowItWorks, {
 import styleProductCta, { useProductCtaStyle } from "./views/ProductCTA";
 import styleAppFooter, { useAppFooterStyle } from "./views/AppFooter";
 import styleSignIn, { useSignInStyles } from "./views/SingIn";
+
+// export Components
+import {
+  useDotIndicatorStyles,
+  dotIndicatorStyles,
+} from "./components/indicator/dot";
+
 export {
   styleProductCta,
   styleProductCategoria,
   styleAppBar,
   useAppAppBarStyles,
+  useDotIndicatorStyles,
+  dotIndicatorStyles,
   styleProductHowItWorks,
   styleProductHero,
   useProductCategories,
