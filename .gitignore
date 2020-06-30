@@ -3,6 +3,7 @@
 # dependencies
 /node_modules
 /src/zviewsgridmall
+/src/zviewsnevado
 /.pnp
 .pnp.js
 
