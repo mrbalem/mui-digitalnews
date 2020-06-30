@@ -11,7 +11,7 @@ export interface ProductHowItWorksProps {
   /**
    * redireccion a una url en especifica
    */
-  redired: string;
+  redired?: string;
   /**
    * es el contenido a mostrar
    */
