@@ -4,15 +4,37 @@ import { MuiTypography, MuiButton } from "../../components";
 import { useProductHowItWorksStyle } from "../../styles";
 
 export interface ProductHowItWorksProps {
+  /**
+   * titulo para el componente
+   */
   title: string;
+  /**
+   * redireccion a una url en especifica
+   */
   redired: string;
+  /**
+   * es el contenido a mostrar
+   */
   process: Array<{ img: string; alt: string; description: string }>;
+  /**
+   * especifica el id del componente
+   */
   id?: string;
+  /**
+   * inabilita la accion del booton
+   */
+  inactiveAction?: true;
 }
+
+/**
+ * @author DigitalNews
+ * @version 1.0.0
+ * @param props necesarios para el funcionamiento del componente
+ */
 
 const ProductHowItWorks: React.SFC<ProductHowItWorksProps> = (props) => {
   const classes = useProductHowItWorksStyle();
-  const { title, id, process, redired } = props;
+  const { title, id, process, redired, inactiveAction = false } = props;
   return (
     <section id={id} className={classes.root}>
       <Container className={classes.container}>
@@ -43,23 +65,25 @@ const ProductHowItWorks: React.SFC<ProductHowItWorksProps> = (props) => {
             ))}
           </Grid>
         </div>
-        <div
-          style={{
-            width: "100%",
-            justifyContent: "center",
-            display: "flex",
-          }}
-        >
-          <MuiButton
-            color="secondary"
-            size="large"
-            variant="contained"
-            className={classes.button}
-            href={redired}
+        {!inactiveAction && (
+          <div
+            style={{
+              width: "100%",
+              justifyContent: "center",
+              display: "flex",
+            }}
           >
-            empezar
-          </MuiButton>
-        </div>
+            <MuiButton
+              color="secondary"
+              size="large"
+              variant="contained"
+              className={classes.button}
+              href={redired}
+            >
+              empezar
+            </MuiButton>
+          </div>
+        )}
       </Container>
     </section>
   );
