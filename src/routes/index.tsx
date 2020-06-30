@@ -9,7 +9,8 @@ import Privacy from "../xample/Privacy";
 import Terms from "../xample/Terms";
 import ThemeTwo from "../xample/ThemeTwo";
 import Prueba from "../zviewsgridmall/prueba";
-import PrivateRouter from "./private";
+import { HomeNevado, SignInNevado } from "../zviewsnevado";
+//import PrivateRouter from "./private";
 
 /**
  * @version 1.0.1
@@ -26,12 +27,12 @@ const Routes = () => (
     <div className="flex main">
       <div className="column full">
         <Switch>
-          <Route path="/" exact component={HomeGirdMall} />
+          <Route path="/" exact component={HomeNevado} />
           <Route path="/register/:id" exact component={RegisterGridMall} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
           <Route path="/prueba" exact component={Prueba} />
-          <Route path="/sign-in" exact component={Prueba} />
+          <Route path="/sign-in" exact component={SignInNevado} />
           <Route path="/themetwo" exact component={ThemeTwo} />
           {/* <Route component={Page404} /> */}
         </Switch>
