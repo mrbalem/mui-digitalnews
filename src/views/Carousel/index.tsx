@@ -38,7 +38,7 @@ const data = [
       "https://firebasestorage.googleapis.com/v0/b/mui-treasury.appspot.com/o/public%2Fshoes%2Fair-max-deluxe.png?alt=media",
   },
   {
-    id: 3,
+    id: 4,
     title: "Air Max",
     subtitle: "Deluxe",
     image:
@@ -199,7 +199,7 @@ const ParallaxCarousel = () => {
       <div className={classes.indicatorContainer}>
         {data.map(({ id }, i) => (
           <DotIndicator
-            key={id}
+            key={id.toString()}
             active={i === index}
             onClick={() => onChangeIndex(i)}
           />
