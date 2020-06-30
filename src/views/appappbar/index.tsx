@@ -7,6 +7,7 @@ import { Link } from "@material-ui/core";
 
 //[*] style digitalnews
 import { useAppAppBarStyles } from "../../styles";
+import LinkRoute from "../../components/button/Link";
 
 export interface AppAppBarProps {
   title: string;
@@ -40,35 +41,43 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
   const { title, color, rightItem, centerItems, position = "static" } = props;
   //[*] hooks active link
   const [actived, setActive] = React.useState(0);
+
+  // const handleClick = (
+  //   event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+  // ) => {
+  //   event.preventDefault();
+  //   //index && setActive(index);
+  // };
   return (
     <div>
       <MuiAppBar color={color} position={position}>
         <MuiToolbar className={classes.toolbar}>
           <div className={classes.left} />
-          <Link
+          <LinkRoute
             variant="h6"
+            // onClick={handleClick}
             underline="none"
             color="inherit"
             className={classes.title}
-            href="/#"
+            to="/#"
           >
             {title}
-          </Link>
+          </LinkRoute>
           <div className={classes.right}>
             {rightItem.map((element, index) => (
-              <Link
+              <LinkRoute
                 key={element.name + index.toString()}
                 color="inherit"
                 variant="h6"
                 underline="none"
-                href={element.link}
+                to={element.link}
                 className={clsx(
                   classes.rightLink,
                   index + 1 === rightItem.length && classes.linkSecondary
                 )}
               >
                 {element.name}
-              </Link>
+              </LinkRoute>
             ))}
           </div>
         </MuiToolbar>
@@ -76,20 +85,20 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
           <div className={classes.nav}>
             <div className={classes.left} />
             {centerItems.map((ele, index) => (
-              <Link
+              <LinkRoute
                 key={ele.name + index.toString()}
                 color="inherit"
                 variant="h6"
                 underline="none"
                 onClick={() => setActive(index)}
-                href={ele.link}
+                to={ele.link}
                 className={clsx(
                   classes.rightLink,
                   actived === index && classes.linkSecondary
                 )}
               >
                 {ele.name}
-              </Link>
+              </LinkRoute>
             ))}
             <div className={classes.right} />
           </div>
