@@ -7,14 +7,18 @@ import {
   FormControl,
   Button,
   Hidden,
+  LinearProgress,
 } from "@material-ui/core/";
 import { useSignInStyles } from "../../styles";
 import { Forms } from "easyformui";
+import { WithRootConnet } from "../../context/connect";
+import { MuiSnackbar } from "../../components";
+import { auth } from "../../utils/fiebase";
 
 const cover =
   "https://media.wired.com/photos/59273cc6cefba457b079c810/master/pass/FFZERO1_029.jpg";
 
-export interface SingInProps {
+export interface SingInProps extends WithRootConnet {
   portada: { title: string; subtitle: string; message: string };
   cover?: string;
   title: string;
@@ -22,7 +26,58 @@ export interface SingInProps {
 
 const SingIn: React.SFC<SingInProps> = (props) => {
   const classes = useSignInStyles({ cover: props.cover || cover });
-  const { portada, title } = props;
+  const { portada, title, actions } = props;
+
+  //[*] hoooks para mostrar el error
+  const [error, setError] = React.useState({ open: false, message: "" });
+
+  //[*] hooks active loading for onsubmit
+  const [isLoading, setLoading] = React.useState(false);
+
+  //[*] ocultar el mensaje de error
+  const handleClose = () => {
+    setError((prev) => ({ ...prev, open: false }));
+  };
+
+  const authentication = async ({ username, password }: any) => {
+    setLoading(true);
+    try {
+      await auth().signInWithEmailAndPassword(username, password);
+      let user = auth().currentUser;
+      if (user) {
+        setLoading(false);
+        actions.signInAdmin(user.uid);
+        // redired && history.push(redired(user.uid));
+      } else {
+        setLoading(false);
+        setError({
+          open: true,
+          message: "Ocurrio un error inesperado.",
+        });
+      }
+    } catch (error) {
+      setLoading(false);
+      switch (error.code) {
+        case "auth/user-not-found":
+          setError({
+            open: true,
+            message:
+              "No hay registro de usuario correspondiente a este identificador.",
+          });
+          break;
+        case "auth/wrong-password":
+          setError({
+            open: true,
+            message:
+              "La contraseña no es válida o el usuario no tiene una contraseña.",
+          });
+          break;
+        default:
+          alert(error.code);
+      }
+    }
+  };
+
   return (
     <Grid className={classes.root} container>
       <Hidden smUp>
@@ -52,6 +107,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
           </div>
         </Grid>
       </Hidden>
+
       <Grid
         container
         justify={"center"}
@@ -64,6 +120,11 @@ const SingIn: React.SFC<SingInProps> = (props) => {
         className={classes.form}
       >
         <div className={"DL01-form"}>
+          {isLoading && (
+            <LinearProgress
+              style={{ position: "absolute", top: 0, right: 0, width: "41.7%" }}
+            />
+          )}
           <img
             alt={"logo"}
             className={"DL01-logo"}
@@ -74,10 +135,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
           <Typography color={"textSecondary"}>{title}</Typography>
           <br />
           <Forms
-            onSubmit={(values, { setSubmitting }) => {
-              alert(JSON.stringify(values));
-              setSubmitting(false);
-            }}
+            onSubmit={authentication}
             variant="filled"
             form={[
               {
@@ -122,6 +180,11 @@ const SingIn: React.SFC<SingInProps> = (props) => {
           </Typography> */}
         </div>
       </Grid>
+      <MuiSnackbar
+        open={error.open}
+        onClose={handleClose}
+        message={error.message}
+      />
     </Grid>
   );
 };
