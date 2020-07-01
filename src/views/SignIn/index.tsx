@@ -19,10 +19,25 @@ const cover =
   "https://media.wired.com/photos/59273cc6cefba457b079c810/master/pass/FFZERO1_029.jpg";
 
 export interface SingInProps extends WithRootConnet {
+  /**
+   * identifica la porta del componente
+   */
   portada: { title: string; subtitle: string; message: string };
+  /**
+   * identifica la imagen de backgorund del componente
+   */
   cover?: string;
+  /**
+   * determina el titulo del componente
+   */
   title: string;
 }
+
+/**
+ * @author Rony cb
+ * @version 1.0.0
+ * @param props pros necesarios para le funcionamiento de session de inicio
+ */
 
 const SingIn: React.SFC<SingInProps> = (props) => {
   const classes = useSignInStyles({ cover: props.cover || cover });
