@@ -4,6 +4,8 @@ enum types {
   SIGN_IN = "SIGN_IN",
   RESTORE_TOKEN = "RESTORE_TOKEN",
   SIGN_OUT = "SIGN_OUT",
+  SET_TOKEN_ADMIN = "SET_TOKEN_ADMIN",
+  SIGN_OUT_ADMIN = "SIGN_OUT_ADMIN",
 }
 
 export type state = {
@@ -11,6 +13,7 @@ export type state = {
   isLogin: boolean | null;
   isSignout: boolean | null;
   userToken: string | null;
+  adminToken: string | null;
 };
 
 let initialState: any = {
@@ -18,6 +21,7 @@ let initialState: any = {
   isLogin: JSON.parse(localStorage.getItem("isLogin") || "false"),
   isSignout: JSON.parse(localStorage.getItem("isSignout") || "false"),
   userToken: JSON.parse(localStorage.getItem("userToken") || "null"),
+  adminToken: JSON.parse(localStorage.getItem("adminToken") || "null"),
 };
 
 const reducer = (state: state, action: any) => {
@@ -45,6 +49,20 @@ const reducer = (state: state, action: any) => {
       return {
         ...state,
         userToken: action.payload,
+      };
+
+    case types.SET_TOKEN_ADMIN:
+      localStorage.setItem("adminToken", JSON.stringify(action.payload));
+      return {
+        ...state,
+        adminToken: action.payload,
+      };
+
+    case types.SIGN_OUT_ADMIN:
+      localStorage.removeItem("adminToken");
+      return {
+        ...state,
+        adminToken: null,
       };
 
     case types.SIGN_OUT:
