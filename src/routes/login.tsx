@@ -9,26 +9,26 @@ import { Route, Redirect, RouteProps } from "react-router-dom";
 
 type RouterPropsOmit = Omit<RouteProps, "render" | "component">;
 
-export interface PrivateRouterProps extends RouterPropsOmit {
+export interface LoginRouteProps extends RouterPropsOmit {
   component: React.SFC<any>;
 }
 
-const PrivateRouter: React.SFC<PrivateRouterProps> = (props) => {
+const LoginRoute: React.SFC<LoginRouteProps> = (props) => {
   const { component: Component, ...rest } = props;
   //[*] hoooks para verificar si existe una sessión en nuestro aplicativo
-  const isLoginAdmin = useVerifySessionAdmin();
+  const loginAdminToken = useVerifySessionAdmin();
   return (
     <Route
       {...rest}
       render={(props) => {
-        if (isLoginAdmin) {
+        if (!loginAdminToken) {
           return <Component {...props} />;
         } else {
-          return <Redirect to="/admin/sign-in" />;
+          return <Redirect to={"/admin/home?user=" + loginAdminToken} />;
         }
       }}
     />
   );
 };
 
-export default PrivateRouter;
+export default LoginRoute;

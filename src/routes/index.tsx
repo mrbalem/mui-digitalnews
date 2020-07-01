@@ -4,12 +4,19 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 /**
  * @description Incorporación de todas las rutas
  */
-import { HomeGirdMall, RegisterGridMall } from "../zviewsgridmall";
+import { RegisterGridMall } from "../zviewsgridmall";
 import Privacy from "../xample/Privacy";
 import Terms from "../xample/Terms";
 import ThemeTwo from "../xample/ThemeTwo";
 import Prueba from "../zviewsgridmall/prueba";
-import { HomeNevado, SignInNevado } from "../zviewsnevado";
+import {
+  HomeNevado,
+  SignInNevado,
+  ProductsNevado,
+  AdminNevado,
+} from "../zviewsnevado";
+import PrivateRouter from "./private";
+import LoginRoute from "./login";
 //import PrivateRouter from "./private";
 
 /**
@@ -31,8 +38,10 @@ const Routes = () => (
           <Route path="/register/:id" exact component={RegisterGridMall} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
+          <Route path="/products" exact component={ProductsNevado} />
           <Route path="/prueba" exact component={Prueba} />
-          <Route path="/sign-in" exact component={SignInNevado} />
+          <LoginRoute path="/admin/sign-in" exact component={SignInNevado} />
+          <PrivateRouter path="/admin/home" exact component={AdminNevado} />
           <Route path="/themetwo" exact component={ThemeTwo} />
           {/* <Route component={Page404} /> */}
         </Switch>
