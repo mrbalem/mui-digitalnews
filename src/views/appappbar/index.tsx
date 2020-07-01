@@ -2,8 +2,6 @@ import * as React from "react";
 import clsx from "clsx";
 //[*] components digitalnews
 import { MuiAppBar, MuiToolbar } from "../../components";
-//[*] components material ui
-import { Link } from "@material-ui/core";
 
 //[*] style digitalnews
 import { useAppAppBarStyles } from "../../styles";
