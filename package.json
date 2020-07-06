@@ -41,6 +41,7 @@
     "graphql": "^15.1.0",
     "graphql-tag": "^2.10.3",
     "material-table": "^1.63.1",
+    "module-alias": "^2.2.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet-async": "^1.0.6",
@@ -81,5 +82,16 @@
     "@storybook/preset-create-react-app": "^3.1.2",
     "@storybook/react": "^5.3.19",
     "easyformui": "^1.2.1"
+  },
+  "_moduleAliases": {
+    "@root": "src",
+    "@components": "src/components",
+    "@context": "src/context",
+    "@utils": "src/utils",
+    "@libs": "src/libs",
+    "@routes": "src/routes",
+    "@stories": "src/stories",
+    "@views": "src/views",
+    "@xample": "src/xample"
   }
 }
