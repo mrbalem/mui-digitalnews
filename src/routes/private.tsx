@@ -6,6 +6,7 @@
 import React from "react";
 import { useVerifySessionAdmin } from "../utils/session";
 import { Route, Redirect, RouteProps } from "react-router-dom";
+import Paperbase from "../views/themetwo/Paperbase";
 
 type RouterPropsOmit = Omit<RouteProps, "render" | "component">;
 
@@ -22,7 +23,11 @@ const PrivateRouter: React.SFC<PrivateRouterProps> = (props) => {
       {...rest}
       render={(props) => {
         if (isLoginAdmin) {
-          return <Component {...props} />;
+          return (
+            <Paperbase>
+              <Component {...props} />
+            </Paperbase>
+          );
         } else {
           return <Redirect to="/admin/sign-in" />;
         }
