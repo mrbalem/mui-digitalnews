@@ -11,7 +11,7 @@ import Hidden from "@material-ui/core/Hidden";
 import Typography from "@material-ui/core/Typography";
 import Link from "@material-ui/core/Link";
 import Navigator from "../Navigator";
-import Content from "../Content";
+// import Content from "../Content";
 import Header from "../AppAppBar";
 
 function Copyright() {
@@ -166,10 +166,12 @@ const styles = createStyles({
   },
 });
 
-export interface PaperbaseProps extends WithStyles<typeof styles> {}
+export interface PaperbaseProps extends WithStyles<typeof styles> {
+  children: React.ReactNode;
+}
 
 function Paperbase(props: PaperbaseProps) {
-  const { classes } = props;
+  const { classes, children } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -195,9 +197,10 @@ function Paperbase(props: PaperbaseProps) {
         </nav>
         <div className={classes.app}>
           <Header onDrawerToggle={handleDrawerToggle} />
-          <main className={classes.main}>
-            <Content />
-          </main>
+          {/* <main className={classes.main}> */}
+          {/* <Content /> */}
+          {children}
+          {/* </main> */}
           <footer className={classes.footer}>
             <Copyright />
           </footer>

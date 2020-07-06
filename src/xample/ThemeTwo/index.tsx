@@ -6,7 +6,9 @@ export interface ThemeTwoProps {}
 const ThemeTwo: React.SFC<ThemeTwoProps> = () => {
   return (
     <div>
-      <Paperbase />
+      <Paperbase>
+        <div>dslakdkl</div>
+      </Paperbase>
     </div>
   );
 };
