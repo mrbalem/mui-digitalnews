@@ -92,6 +92,7 @@
     "@routes": "src/routes",
     "@stories": "src/stories",
     "@views": "src/views",
+    "@styles": "src/styles",
     "@xample": "src/xample"
   }
 }

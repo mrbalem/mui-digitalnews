@@ -24,6 +24,7 @@
     "@utils/*": ["utils/*"],
     "@libs/*": ["libs/*"],
     "@routes/*": ["routes/*"],
+    "@styles/*": ["styles/*"],
     "@stories/*": ["stories/*"],
     "@views/*": ["views/*"],
     "@xample/*": ["xample/*"]
