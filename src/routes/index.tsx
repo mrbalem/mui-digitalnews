@@ -4,20 +4,10 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 /**
  * @description Incorporación de todas las rutas
  */
-import { RegisterGridMall } from "../zviewsgridmall";
+import Home from "../xample/Home";
 import Privacy from "../xample/Privacy";
 import Terms from "../xample/Terms";
 import ThemeTwo from "../xample/ThemeTwo";
-import Prueba from "../zviewsgridmall/prueba";
-import {
-  HomeNevado,
-  SignInNevado,
-  ProductsNevado,
-  AdminNevado,
-} from "../zviewsnevado";
-import PrivateRouter from "./private";
-import LoginRoute from "./login";
-import { ClientsViewsAdmin } from "../zviewsnevado/Admin/views";
 //import PrivateRouter from "./private";
 
 /**
@@ -25,9 +15,6 @@ import { ClientsViewsAdmin } from "../zviewsnevado/Admin/views";
  * @author Rony cb - Mrvalem
  * @description Manejo de todas las rutas de la aplicación
  * @process 3
- * @warning [!] por favor reemplace estas rutas con example o cree sus propias vistas para
- * implementarlo.
- * @example import {Home, ...etc} from '../xample/
  */
 
 const Routes = () => (
@@ -35,19 +22,9 @@ const Routes = () => (
     <div className="flex main">
       <div className="column full">
         <Switch>
-          <Route path="/" exact component={HomeNevado} />
-          <Route path="/register/:id" exact component={RegisterGridMall} />
+          <Route path="/" exact component={Home} />
           <Route path="/privacy" exact component={Privacy} />
           <Route path="/terms" exact component={Terms} />
-          <Route path="/products" exact component={ProductsNevado} />
-          <Route path="/prueba" exact component={Prueba} />
-          <LoginRoute path="/admin/sign-in" exact component={SignInNevado} />
-          <PrivateRouter path="/admin/home" exact component={AdminNevado} />
-          <PrivateRouter
-            path="/admin/home/clients"
-            exact
-            component={ClientsViewsAdmin}
-          />
           <Route path="/themetwo" exact component={ThemeTwo} />
           {/* <Route component={Page404} /> */}
         </Switch>
