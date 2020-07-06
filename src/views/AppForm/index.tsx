@@ -1,6 +1,6 @@
 import * as React from "react";
 import { makeStyles, Container, Box } from "@material-ui/core";
-import { MuiPaper } from "@components/index";
+import { MuiPaper } from "../../components/index";
 
 //[*] style for component
 const useStyles = makeStyles((theme) => ({

@@ -10,7 +10,7 @@ import {
 } from "../../components";
 
 // style from component
-import { useProductCtaStyle } from "@styles/index";
+import { useProductCtaStyle } from "../../styles";
 
 export interface ProductCTAProps {
   /**

@@ -1,11 +1,11 @@
 import * as React from "react";
 import clsx from "clsx";
 //[*] components digitalnews
-import { MuiAppBar, MuiToolbar } from "@components/index";
+import { MuiAppBar, MuiToolbar } from "../../components/";
 
 //[*] style digitalnews
-import { useAppAppBarStyles } from "@styles/index";
-import LinkRoute from "@components/button/Link";
+import { useAppAppBarStyles } from "../../styles/";
+import LinkRoute from "../../components/button/Link/";
 
 export interface AppAppBarProps {
   title: string;

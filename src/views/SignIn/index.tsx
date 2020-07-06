@@ -9,11 +9,11 @@ import {
   Hidden,
   LinearProgress,
 } from "@material-ui/core/";
-import { useSignInStyles } from "@styles/index";
+import { useSignInStyles } from "../../styles";
 import { Forms } from "easyformui";
-import { WithRootConnet } from "@context/connect";
-import { MuiSnackbar } from "@components/index";
-import { auth } from "@utils/fiebase";
+import { WithRootConnet } from "../../context/connect";
+import { MuiSnackbar } from "../../components";
+import { auth } from "../../utils/fiebase";
 
 const cover =
   "https://media.wired.com/photos/59273cc6cefba457b079c810/master/pass/FFZERO1_029.jpg";

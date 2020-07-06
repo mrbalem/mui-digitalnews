@@ -9,8 +9,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-//[*] register module/require aliases
-import "module-alias/register";
 /**
  * config apollo tools
  * removing if no use for proyect
@@ -38,8 +36,10 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 //[*] link server graphql
 const link = new HttpLink({
-  uri: "https://cryptic-refuge-32742.herokuapp.com/graphql/inkmarket",
+  uri: process.env.REACT_APP_API_URL,
 });
+
+console.log("variable de entorno", process.env.REACT_APP_API_URL);
 
 //[*] cache for data graphql
 const cache = new InMemoryCache();

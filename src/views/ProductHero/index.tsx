@@ -4,8 +4,8 @@ import productHeroArrowDown from "./productHeroArrowDown.png";
 
 //[*] component digital news
 import ProductHeroLayout from "../ProductHeroLayout";
-import { MuiTypography, MuiButton } from "@components/index";
-import { useProductHeroStyle } from "@styles/index";
+import { MuiTypography, MuiButton } from "../../components";
+import { useProductHeroStyle } from "../../styles";
 
 const backgroundImage =
   "https://images.unsplash.com/photo-1534854638093-bada1813ca19?auto=format&fit=crop&w=1400&q=80";
