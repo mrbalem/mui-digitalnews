@@ -13,20 +13,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "baseUrl": "./src",
-    "paths": {
-      "@root/*": ["/*"],
-      "@components/*": ["components/*"],
-      "@context/*": ["context/*"],
-      "@utils/*": ["utils/*"],
-      "@libs/*": ["libs/*"],
-      "@routes/*": ["routes/*"],
-      "@styles/*": ["styles/*"],
-      "@stories/*": ["stories/*"],
-      "@views/*": ["views/*"],
-      "@xample/*": ["xample/*"]
-    }
+    "jsx": "react"
   },
   "include": ["src"]
 }

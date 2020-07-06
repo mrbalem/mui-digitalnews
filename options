@@ -1,0 +1,12 @@
+ "paths": {
+      "@root/*": ["/*"],
+      "@components/*": ["components/*"],
+      "@context/*": ["context/*"],
+      "@utils/*": ["utils/*"],
+      "@libs/*": ["libs/*"],
+      "@routes/*": ["routes/*"],
+      "@stories/*": ["stories/*"],
+      "@views/*": ["views/*"],
+      "@styles/*": ["styles/*"],
+      "@xample/*": ["xample/*"]
+    }
