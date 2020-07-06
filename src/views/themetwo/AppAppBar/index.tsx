@@ -9,8 +9,8 @@ import IconButton from "@material-ui/core/IconButton";
 import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import Tab from "@material-ui/core/Tab";
-import Tabs from "@material-ui/core/Tabs";
+// import Tab from "@material-ui/core/Tab";
+// import Tabs from "@material-ui/core/Tabs";
 import Toolbar from "@material-ui/core/Toolbar";
 import Tooltip from "@material-ui/core/Tooltip";
 import Typography from "@material-ui/core/Typography";
@@ -20,6 +20,7 @@ import {
   withStyles,
   WithStyles,
 } from "@material-ui/core/styles";
+import { getParameter } from "../../../utils/http";
 
 const lightColor = "rgba(255, 255, 255, 0.7)";
 
@@ -102,7 +103,7 @@ function Header(props: HeaderProps) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                Authentication
+                {getParameter("page").toLocaleUpperCase()}
               </Typography>
             </Grid>
             <Grid item>
@@ -125,7 +126,7 @@ function Header(props: HeaderProps) {
           </Grid>
         </Toolbar>
       </AppBar>
-      <AppBar
+      {/* <AppBar
         component="div"
         className={classes.secondaryBar}
         color="primary"
@@ -138,7 +139,7 @@ function Header(props: HeaderProps) {
           <Tab textColor="inherit" label="Templates" />
           <Tab textColor="inherit" label="Usage" />
         </Tabs>
-      </AppBar>
+      </AppBar> */}
     </React.Fragment>
   );
 }
