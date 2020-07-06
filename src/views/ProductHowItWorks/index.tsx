@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Grid } from "@material-ui/core";
-import { MuiTypography, MuiButton } from "../../components";
-import { useProductHowItWorksStyle } from "../../styles";
+import { MuiTypography, MuiButton } from "@components/index";
+import { useProductHowItWorksStyle } from "@styles/index";
 
 export interface ProductHowItWorksProps {
   /**

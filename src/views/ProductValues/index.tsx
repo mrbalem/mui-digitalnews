@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 
 // component digital news
-import { MuiTypography } from "../../components";
+import { MuiTypography } from "@components/index";
 
 // styles ProductValues
 

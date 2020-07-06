@@ -8,7 +8,7 @@ import {
   Button,
   withStyles,
 } from "@material-ui/core";
-import { MuiTypography } from "../../components";
+import { MuiTypography } from "@components/index";
 
 // style ProductSmokingHero
 

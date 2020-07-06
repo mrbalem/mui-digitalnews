@@ -2,8 +2,8 @@ import * as React from "react";
 
 // component material ui
 import { Link, Typography, Container, Grid } from "@material-ui/core";
-import { MuiTypography } from "../../components";
-import { useAppFooterStyle } from "../../styles";
+import { MuiTypography } from "@components/index";
+import { useAppFooterStyle } from "@styles/index";
 
 // style AppFoote
 

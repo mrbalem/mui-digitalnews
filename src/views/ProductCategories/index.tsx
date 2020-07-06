@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, ButtonBase } from "@material-ui/core";
-import { MuiTypography } from "../../components";
-import { useProductCategories } from "../../styles";
+import { MuiTypography } from "@components/index";
+import { useProductCategories } from "@styles/index";
 
 export interface ProductCategoriesProps {
   title: string;
