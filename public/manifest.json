@@ -1,7 +1,6 @@
 {
   "short_name": "React App",
   "name": "Create React App Sample",
-  "gcm_sender_id": "103953800507",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,7 +19,9 @@
     }
   ],
   "start_url": ".",
+  "gcm_sender_id": "103953800507",
   "display": "standalone",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "#ffffff",
+  "orientation": "portrait"
 }
