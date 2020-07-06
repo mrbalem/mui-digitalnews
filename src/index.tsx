@@ -4,7 +4,6 @@
  *  @description Punto de Entrada de React
  * 	@process 1
  */
-
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -38,8 +37,6 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const link = new HttpLink({
   uri: process.env.REACT_APP_API_URL,
 });
-
-console.log("variable de entorno", process.env.REACT_APP_API_URL);
 
 //[*] cache for data graphql
 const cache = new InMemoryCache();

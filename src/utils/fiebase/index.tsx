@@ -4,14 +4,14 @@ import "firebase/auth";
 import "firebase/messaging";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAFOO32EX28Uhgxd7h1YoDcQJdHkP9AMg4",
-  authDomain: "ecommers-nevado.firebaseapp.com",
-  databaseURL: "https://ecommers-nevado.firebaseio.com",
-  projectId: "ecommers-nevado",
-  storageBucket: "ecommers-nevado.appspot.com",
-  messagingSenderId: "48819426094",
-  appId: "1:48819426094:web:d16f675abba14e704620bf",
-  measurementId: "G-TN1GL7G83Z",
+  apiKey: process.env.REACT_APP_APIKEY,
+  authDomain: process.env.REACT_APP_AUTHDOMAIN,
+  databaseURL: process.env.REACT_APP_DATABASEURL,
+  projectId: process.env.REACT_APP_PROJECTID,
+  storageBucket: process.env.REACT_APP_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_MESSAGINGSENDERID,
+  appId: process.env.REACT_APP_APPID,
+  measurementId: process.env.REACT_APP_MEASUREMENTID,
 };
 
 firebase.initializeApp(firebaseConfig);
