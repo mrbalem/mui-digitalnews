@@ -26,6 +26,21 @@ const useStyle = makeStyles((theme: Theme) =>
     title: {
       margin: theme.spacing(2),
       marginLeft: theme.spacing(10),
+      [theme.breakpoints.down("xs")]: {
+        margin: theme.spacing(2),
+        marginLeft: theme.spacing(2),
+      },
+    },
+    pagination: {
+      [theme.breakpoints.down("xs")]: {
+        display: "flex",
+        justifyContent: "center",
+      },
+    },
+    card: {
+      [theme.breakpoints.down("xs")]: {
+        paddingLeft: 10,
+      },
     },
   })
 );
@@ -47,14 +62,14 @@ const CardYoutube: React.SFC<CardYoutubeProps> = (props) => {
       )}
       <Grid container>
         <Grid item md={1} />
-        <Grid item md={7}>
-          Flitros
+        <Grid item md={7} xs={12}>
+          {/* <p style={{ textAlign: "center" }}> Flitros </p> */}
         </Grid>
-        <Grid item md={4}>
+        <Grid className={classes.pagination} item md={4} xs={12}>
           <Pagination count={data.length} variant="outlined" shape="rounded" />
         </Grid>
       </Grid>
-      <Grid container justify="center">
+      <Grid className={classes.card} container justify="center">
         {(loading ? Array.from(new Array(12)) : data).map((item, index) => (
           <Box key={index} width={190} marginRight={1} my={2}>
             {item ? (
@@ -95,7 +110,7 @@ const CardYoutube: React.SFC<CardYoutubeProps> = (props) => {
       <br />
       <Grid container>
         <Grid item md={8}></Grid>
-        <Grid item md={4}>
+        <Grid item md={4} className={classes.pagination} xs={12}>
           <Pagination count={data.length} variant="outlined" shape="rounded" />
         </Grid>
       </Grid>
