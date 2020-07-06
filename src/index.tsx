@@ -9,7 +9,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-
+//[*] register module/require aliases
+import "module-alias/register";
 /**
  * config apollo tools
  * removing if no use for proyect
