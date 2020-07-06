@@ -1,6 +1,7 @@
 /** @format */
 import firebase from "firebase/app";
 import "firebase/auth";
+import "firebase/messaging";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAFOO32EX28Uhgxd7h1YoDcQJdHkP9AMg4",
@@ -14,5 +15,18 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+// const { messaging } = nevado;
+
+// firebase.messaging().useServiceWorker()
+
+/**
+ * configuracion notificaciones push use apikey publick notificatión
+ */
+firebase
+  .messaging()
+  .usePublicVapidKey(
+    "BKO0MdQr4fFrDiWInv9Z9mZGh1w6Ysu0aItHnVGRtWv4Z3JGwiVIymnBUYIsLbHhMfzLHjf8fEu3VO5DgaXuMAg"
+  );
 
 export const { auth } = firebase;
+export const { messaging } = firebase;
