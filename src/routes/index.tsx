@@ -17,6 +17,7 @@ import {
 } from "../zviewsnevado";
 import PrivateRouter from "./private";
 import LoginRoute from "./login";
+import { ClientsViewsAdmin } from "../zviewsnevado/Admin/views";
 //import PrivateRouter from "./private";
 
 /**
@@ -42,6 +43,11 @@ const Routes = () => (
           <Route path="/prueba" exact component={Prueba} />
           <LoginRoute path="/admin/sign-in" exact component={SignInNevado} />
           <PrivateRouter path="/admin/home" exact component={AdminNevado} />
+          <PrivateRouter
+            path="/admin/home/clients"
+            exact
+            component={ClientsViewsAdmin}
+          />
           <Route path="/themetwo" exact component={ThemeTwo} />
           {/* <Route component={Page404} /> */}
         </Switch>
