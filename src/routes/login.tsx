@@ -24,7 +24,9 @@ const LoginRoute: React.SFC<LoginRouteProps> = (props) => {
         if (!loginAdminToken) {
           return <Component {...props} />;
         } else {
-          return <Redirect to={"/admin/home?user=" + loginAdminToken} />;
+          return (
+            <Redirect to={"/admin/home?page=almacen&user=" + loginAdminToken} />
+          );
         }
       }}
     />
