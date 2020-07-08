@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Breadcrumbs, BreadcrumbsProps, Typography } from "@material-ui/core";
+import HomeIcon from "@material-ui/icons/Home";
 import LinkRoute from "../../button/Link";
 
 export interface BreadCrumbsRouteProps extends BreadcrumbsProps {
@@ -24,7 +25,8 @@ const BreadCrumbsRoute: React.SFC<BreadCrumbsRouteProps> = (props) => {
   const pathnames = location.pathname.split("/").filter((x: string) => x);
   return (
     <Breadcrumbs {...other} aria-label="breadcrumb">
-      <LinkRoute color="inherit" to="/">
+      <LinkRoute style={{ display: "flex" }} color="inherit" to="/">
+        <HomeIcon style={{ width: 20, height: 20, marginRight: 1 }} />
         Inicio
       </LinkRoute>
       {pathnames.map((ele: any, index: number) => (
