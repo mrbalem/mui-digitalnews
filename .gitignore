@@ -7,7 +7,7 @@
 .firebase
 /.pnp
 .pnp.js
-
+.storybook
 # testing
 /coverage
 
