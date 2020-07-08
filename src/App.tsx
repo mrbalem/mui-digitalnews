@@ -11,6 +11,8 @@ import { HelmetProvider } from "react-helmet-async";
 import { StoreProvider } from "./context/StoreContext";
 import withRoot from "./libs/withroot";
 
+import "./_app.style.scss";
+
 const App = () => (
   <div className="App">
     <HelmetProvider>
