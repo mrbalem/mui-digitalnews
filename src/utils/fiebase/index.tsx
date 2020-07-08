@@ -22,11 +22,13 @@ firebase.initializeApp(firebaseConfig);
 /**
  * configuracion notificaciones push use apikey publick notificatión
  */
-firebase
-  .messaging()
-  .usePublicVapidKey(
-    "BKO0MdQr4fFrDiWInv9Z9mZGh1w6Ysu0aItHnVGRtWv4Z3JGwiVIymnBUYIsLbHhMfzLHjf8fEu3VO5DgaXuMAg"
-  );
+
+//[*] active for production messagin notification
+// firebase
+//   .messaging()
+//   .usePublicVapidKey(
+//     process.env.REACT_APP_MESSAGIN_APIKEY
+//   );
 
 export const { auth } = firebase;
 export const { messaging } = firebase;
