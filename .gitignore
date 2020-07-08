@@ -4,6 +4,7 @@
 /node_modules
 /src/zviewsgridmall
 /src/zviewsnevado
+./firebase
 /.pnp
 .pnp.js
 
@@ -21,6 +22,8 @@
 .env.production.local
 .env
 
+.firebaserc
+firebase.json
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
