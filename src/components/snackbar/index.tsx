@@ -31,6 +31,17 @@ const styles = (theme: Theme) =>
         borderBottomLeftRadius: 4,
       },
     },
+    contentError: {
+      backgroundColor: theme.palette.error.main,
+      color: theme.palette.error.contrastText,
+      flexWrap: "inherit",
+      [theme.breakpoints.up("md")]: {
+        borderTopLeftRadius: 0,
+        borderTopRightRadius: 0,
+        borderBottomRightRadius: 4,
+        borderBottomLeftRadius: 4,
+      },
+    },
     contentMessage: {
       fontSize: 16,
       display: "flex",
@@ -51,6 +62,7 @@ const styles = (theme: Theme) =>
 export interface MuiSnackbarProps extends SnackbarProps {
   message: string;
   onClose: () => void;
+  error?: boolean;
 }
 
 function Transition(props: SlideProps) {
@@ -59,20 +71,28 @@ function Transition(props: SlideProps) {
 
 /**
  * @author Ronu cb
- * @version 1.0.1
+ * @version 1.0.2
  */
 const MuiSnackbar: React.SFC<MuiSnackbarProps & WithStyles<typeof styles>> = (
   props
 ) => {
-  const { classes, onClose, message, ...other } = props;
+  const {
+    classes,
+    onClose,
+    error,
+    autoHideDuration = 6000,
+    message,
+    ...other
+  } = props;
   return (
     <Snackbar
+      onClose={onClose}
       anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      autoHideDuration={6000}
+      autoHideDuration={autoHideDuration}
       TransitionComponent={Transition}
       ContentProps={{
         classes: {
-          root: classes.content,
+          root: error ? classes.contentError : classes.content,
           message: classes.contentMessage,
           action: classes.contentAction,
         },
