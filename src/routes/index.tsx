@@ -11,7 +11,7 @@ import ThemeTwo from "../xample/ThemeTwo";
 //import PrivateRouter from "./private";
 
 /**
- * @version 1.0.1
+ * @version 1.0.2
  * @author Rony cb - Mrvalem
  * @description Manejo de todas las rutas de la aplicación
  * @process 3

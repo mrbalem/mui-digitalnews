@@ -11,10 +11,11 @@ type RouterPropsOmit = Omit<RouteProps, "render" | "component">;
 
 export interface RestrictRouteProps extends RouterPropsOmit {
   component: React.SFC<any>;
+  redirect: string;
 }
 
 const RestrictRoute: React.SFC<RestrictRouteProps> = (props) => {
-  const { component: Component, ...rest } = props;
+  const { component: Component, redirect, ...rest } = props;
   //[*] hoooks para verificar si existe una sessión en nuestro aplicativo
   const isLogin = useVerifySession();
   return (
@@ -24,7 +25,7 @@ const RestrictRoute: React.SFC<RestrictRouteProps> = (props) => {
         if (isLogin) {
           return <Component {...props} />;
         } else {
-          return <Redirect to="/404" />;
+          return <Redirect to={redirect} />;
         }
       }}
     />
