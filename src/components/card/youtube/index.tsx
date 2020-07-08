@@ -62,10 +62,10 @@ const CardYoutube: React.SFC<CardYoutubeProps> = (props) => {
       )}
       <Grid container>
         <Grid item md={1} />
-        <Grid item md={7} xs={12}>
+        <Grid item md={6} xs={12}>
           {/* <p style={{ textAlign: "center" }}> Flitros </p> */}
         </Grid>
-        <Grid className={classes.pagination} item md={4} xs={12}>
+        <Grid className={classes.pagination} item md={5} xs={12}>
           <Pagination count={data.length} variant="outlined" shape="rounded" />
         </Grid>
       </Grid>
