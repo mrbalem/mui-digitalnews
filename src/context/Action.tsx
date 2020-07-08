@@ -19,20 +19,10 @@ export const useActions = (state: any, dispatch: any) => {
     dispatch({ type: types.SIGN_OUT });
   };
 
-  const signInAdmin = (token: string | null) => {
-    dispatch({ type: types.SET_TOKEN_ADMIN, payload: token });
-  };
-
-  const signOutAdmin = () => {
-    dispatch({ type: types.SIGN_OUT_ADMIN });
-  };
-
   return {
     setUser,
     resToreToken,
     signOut,
-    signInAdmin,
-    signOutAdmin,
     signIn,
   };
 };
