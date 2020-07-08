@@ -4,6 +4,7 @@
 /node_modules
 /src/zviewsgridmall
 /src/zviewsnevado
+/src/static/products
 .firebase
 /.pnp
 .pnp.js
