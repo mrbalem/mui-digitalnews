@@ -22,14 +22,14 @@ export interface WithRootConnet extends RouteComponentProps {
  * nuestras paginas o componentes
  */
 
-const connect = (Component: React.SFC<WithRootConnet>) => {
+const connect = (Component: React.FC<WithRootConnet>) => {
   /**
    * @interface RouteComponentProps contiene history, location y match props
    * @param props recuperamos los valores de la interface y se lo pasamos a nuestro componente.
    * @description Esta Componente nos permite Recuperar los props de react router dom y pasarselo
    * a nuestro componente conectado.
    */
-  const Connect: React.SFC<RouteComponentProps> = (props) => {
+  const Connect: React.FC<RouteComponentProps> = (props) => {
     /**
      * recuperamos los estados y actions de nuestro Store Context
      */
