@@ -23,6 +23,13 @@ main {
   margin: 0px auto 0 auto;
 }
 
+.center-flex {
+  display: flex;
+  width: 100% !important;
+  justify-content: center;
+  align-items: center;
+}
+
 @media only screen and (max-width: 1024px) {
   body {
     .filters {
