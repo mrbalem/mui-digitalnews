@@ -73,7 +73,12 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
           {productInstallment}
         </div>
       </Paper>
-      <div className="shelf-item__buy-btn">Add to cart</div>
+      <div
+        onClick={() => alert(JSON.stringify(product))}
+        className="shelf-item__buy-btn"
+      >
+        Añadir al carrito
+      </div>
     </div>
   );
 };
