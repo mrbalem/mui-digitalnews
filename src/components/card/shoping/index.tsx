@@ -22,8 +22,9 @@ const useStales = makeStyles((theme: Theme) => ({
   },
 }));
 
-const ProductList: React.SFC<ProductListProps> = (props) => {
+const ProductList: React.FC<ProductListProps> = (props) => {
   const { products, loading } = props;
+  console.log("produclist", props);
   const classes = useStales();
 
   if (loading) {
