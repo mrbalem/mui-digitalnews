@@ -6,3 +6,6 @@ export const formatPrice = (x: number, currency: string) => {
       return x.toFixed(2);
   }
 };
+
+export const createRangeArray = (start: number, stop: number, step: number) =>
+  Array.from({ length: (stop - start) / step + 1 }, (_, i) => start + i * step);
