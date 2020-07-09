@@ -1,5 +1,6 @@
 import * as React from "react";
 import "./_floatcard.style.scss";
+import CardProduc from "./CardProduct";
 
 export interface FloatCardProps {}
 
@@ -53,10 +54,37 @@ const FloatCard: React.SFC<FloatCardProps> = () => {
         </div>
         {/* content */}
         <div className="float-cart__shelf-container">
-          <p className="shelf-empty">
-            Add some products in the cart <br />
-            :)
-          </p>
+          {/* <p className="shelf-empty">
+            Añade algunos productos en el carrito. <br />
+            <img
+              style={{ color: "#fff" }}
+              src="/static/img/buy.svg"
+              width="100"
+              alt="productos"
+            ></img>
+          </p> */}
+          {[1, 2, 3, 4, 4, 3].map((e) => (
+            <CardProduc
+              key={e}
+              product={{
+                id: 12,
+                sku: 12064273040195392,
+                title: "NA-3144M1",
+                description: "4 MSL",
+                availableSizes: ["S", "XS"],
+                style: "Black with custom print",
+                price: 159,
+                installments: 20,
+                minQuantity: 20,
+                priceMayor: 150,
+                img:
+                  "https://www.newathletic.com.pe/products/sm/1566504068.jpg",
+                currencyId: "PEN",
+                currencyFormat: "S/.",
+                isFreeShipping: false,
+              }}
+            />
+          ))}
         </div>
         {/* footer */}
         <div className="float-cart__footer">
