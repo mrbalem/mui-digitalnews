@@ -2,21 +2,21 @@
 
 import React, { createContext, useReducer, useEffect } from "react";
 import { reducer, state, initialState } from "./Reducer";
-import { useActions } from "./Action";
+import { useActions, IActions } from "./Action";
 // import useDidUpdate from '../components/useDidUpdate';
 
 interface IContextProps {
   state: state;
-  actions: any;
+  actions: IActions;
 }
 
 const StoreContext = createContext({} as IContextProps);
 
 interface StoreProviderProps {
-  children: any;
+  children: React.ReactNode;
 }
 
-const StoreProvider: React.SFC<StoreProviderProps> = (props) => {
+const StoreProvider: React.FC<StoreProviderProps> = (props) => {
   const { children } = props;
   // Set up reducer with useReducer and our defined reducer, initialState from reducers.js
   const [state, dispatch] = useReducer(reducer, initialState);
