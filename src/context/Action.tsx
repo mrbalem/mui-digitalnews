@@ -2,7 +2,14 @@
 
 import { types } from "./Reducer";
 
-export const useActions = (state: any, dispatch: any) => {
+export interface IActions {
+  setUser: (users: any) => void;
+  resToreToken: (token: string | null) => void;
+  signOut: () => void;
+  signIn: (token: string | null) => void;
+}
+
+export const useActions = (state: any, dispatch: any): IActions => {
   const setUser = (users: any) => {
     dispatch({ type: types.SET_USER, payload: users });
   };
