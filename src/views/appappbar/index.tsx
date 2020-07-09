@@ -12,7 +12,7 @@ export interface AppAppBarProps {
   /**
    * especifica los elementos de los items de rightItem
    */
-  rightItem: Array<{ link: string; name: string }>;
+  rightItem?: Array<{ link: string; name: string }>;
   /**
    * The positioning type. The behavior of the different options is described in the MDN web docs. Note: sticky is not universally supported and will fall back to static when unavailable.
    */
@@ -62,21 +62,22 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
             {title}
           </LinkRoute>
           <div className={classes.right}>
-            {rightItem.map((element, index) => (
-              <LinkRoute
-                key={element.name + index.toString()}
-                color="inherit"
-                variant="h6"
-                underline="none"
-                to={element.link}
-                className={clsx(
-                  classes.rightLink,
-                  index + 1 === rightItem.length && classes.linkSecondary
-                )}
-              >
-                {element.name}
-              </LinkRoute>
-            ))}
+            {rightItem &&
+              rightItem.map((element, index) => (
+                <LinkRoute
+                  key={element.name + index.toString()}
+                  color="inherit"
+                  variant="h6"
+                  underline="none"
+                  to={element.link}
+                  className={clsx(
+                    classes.rightLink,
+                    index + 1 === rightItem.length && classes.linkSecondary
+                  )}
+                >
+                  {element.name}
+                </LinkRoute>
+              ))}
           </div>
         </MuiToolbar>
         {centerItems && (
