@@ -32,7 +32,7 @@ const StoreProviderCP: React.FC<StoreProviderCPProps> = (props) => {
   const value = { state, dispatch, actions };
   // also debuggin develoment state, remove for production.
   useEffect(() => {
-    console.log({ newState: state });
+    console.log("store libre", { newState: state });
   }, [state]);
 
   // Render state, dispatch and special case actions
