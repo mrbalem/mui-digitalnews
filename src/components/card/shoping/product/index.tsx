@@ -5,20 +5,22 @@ import { formatPrice } from "../../../../utils/other";
 import { Paper } from "@material-ui/core";
 
 export interface IProduct {
-  id: number;
-  sku: number | string;
+  uid: string;
+  sku: string;
   title: string;
+  category: string;
+  img: string | string[];
+  quantity: number;
   description: string;
-  img: string;
-  minQuantity: number;
-  priceMayor: number;
-  availableSizes: Array<string>;
-  style: string;
   price: number;
-  installments: number;
   currencyId: string;
   currencyFormat: string;
-  isFreeShipping: boolean;
+  availableSizes: Array<string>;
+  availableColor: Array<string>;
+  isOffertShipping?: boolean;
+  priceMayor?: number;
+  minQuantity?: number;
+  style?: string;
 }
 
 export interface ShopingProps {
@@ -29,15 +31,17 @@ export interface ShopingProps {
 const Shoping: React.SFC<ShopingProps> = (props) => {
   const { product, addProduct } = props;
 
+  // console.log("desde shiping", actions);
+
   let formattedPrice = formatPrice(product.price, product.currencyId);
   let productInstallment;
 
-  if (!!product.installments) {
-    const installmentPrice = product.price / product.installments;
+  if (!!product.isOffertShipping) {
+    // const installmentPrice = product.price / product.installments;
 
     productInstallment = (
       <div className="installment">
-        <span>o {product.minQuantity || product.installments} x </span>
+        <span>o {product.minQuantity || product.isOffertShipping} x </span>
         <b>
           {product.currencyFormat}
           {formatPrice(product.priceMayor || product.price, product.currencyId)}
@@ -47,18 +51,12 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
   }
 
   return (
-    <div
-      className="shelf-item"
-      // onClick={() => addProduct(product)}
-      data-sku={product.sku}
-    >
-      {product.isFreeShipping && (
-        <div className="shelf-stopper">Free shipping</div>
-      )}
+    <div className="shelf-item" data-sku={product.sku}>
+      {product.isOffertShipping && <div className="shelf-stopper">Oferta</div>}
       <Paper className="paper-root" elevation={3}>
         <Thumb
           className="shelf-item__thumb"
-          src={product.img}
+          src={typeof product.img === "string" ? product.img : ""}
           alt={product.title}
           title={product.title}
         />
@@ -66,6 +64,7 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
         <p className="shelf-item__title">{product.title}</p>
         <div className="shelf-item__price">
           <div className="val">
+            <span>{product.minQuantity || 1} x </span>
             <small>{product.currencyFormat}</small>
             <b>{formattedPrice.substr(0, formattedPrice.length - 3)}</b>
             <span>{formattedPrice.substr(formattedPrice.length - 3, 3)}</span>
@@ -74,7 +73,7 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
         </div>
       </Paper>
       <div
-        onClick={() => alert(JSON.stringify(product))}
+        onClick={() => addProduct && addProduct(product)}
         className="shelf-item__buy-btn"
       >
         Añadir al carrito

@@ -1,14 +1,29 @@
 import * as React from "react";
 import "./_floatcard.style.scss";
 import CardProduc from "./CardProduct";
+import cls from "clsx";
+// import { useSelector } from "../../zviewsnevado/Products/action";
+import { formatPrice } from "../../utils/other";
+import { IProduct } from "../card/shoping/product";
+export interface FloatCardProps {
+  productCart: IProduct[];
+  removeProductCard: (uid: string) => void;
+  renderChekout: (param: IChekeout) => void;
+}
 
-export interface FloatCardProps {}
+export interface IChekeout {
+  product: IProduct[];
+  subTotal: number;
+}
 
-const FloatCard: React.SFC<FloatCardProps> = () => {
+const FloatCard: React.SFC<FloatCardProps> = (props) => {
+  const { productCart, removeProductCard, renderChekout } = props;
+
   //[*] hooks status cardFloating
   const [isOpen, setOpen] = React.useState(false);
 
-  let classes = ["float-cart"];
+  //[*] get products Store
+  // const { state, actions } = useSelector();
 
   const handleClose = () => {
     setOpen(false);
@@ -20,14 +35,8 @@ const FloatCard: React.SFC<FloatCardProps> = () => {
     document.getElementsByTagName("html")[0].style.overflow = "hidden";
   };
 
-  if (!!isOpen) {
-    classes.push("float-cart--open");
-
-    // document.getElementsByTagName("html")[0].style.overflow = "auto";
-  }
-
   return (
-    <div className={classes.join(" ")}>
+    <div className={cls("float-cart", !!isOpen && "float-cart--open")}>
       {isOpen && (
         <div onClick={() => handleClose()} className="float-cart__close-btn">
           X
@@ -39,7 +48,7 @@ const FloatCard: React.SFC<FloatCardProps> = () => {
           onClick={() => handelOpen()}
           className="bag bag--float-cart-closed"
         >
-          <span className="bag__quantity">{19}</span>
+          <span className="bag__quantity">{productCart.length}</span>
         </span>
       )}
 
@@ -48,54 +57,67 @@ const FloatCard: React.SFC<FloatCardProps> = () => {
         {/* header */}
         <div className="float-cart__header">
           <span className="bag">
-            <span className="bag__quantity">{13}</span>
+            <span className="bag__quantity">{productCart.length}</span>
           </span>
           <span className="header-title">Cart</span>
         </div>
         {/* content */}
         <div className="float-cart__shelf-container">
-          {/* <p className="shelf-empty">
-            Añade algunos productos en el carrito. <br />
-            <img
-              style={{ color: "#fff" }}
-              src="/static/img/buy.svg"
-              width="100"
-              alt="productos"
-            ></img>
-          </p> */}
-          {[1, 2, 3, 4, 4, 3].map((e) => (
-            <CardProduc
-              key={e}
-              product={{
-                id: 12,
-                sku: 12064273040195392,
-                title: "NA-3144M1",
-                description: "4 MSL",
-                availableSizes: ["S", "XS"],
-                style: "Black with custom print",
-                price: 159,
-                installments: 20,
-                minQuantity: 20,
-                priceMayor: 150,
-                img:
-                  "https://www.newathletic.com.pe/products/sm/1566504068.jpg",
-                currencyId: "PEN",
-                currencyFormat: "S/.",
-                isFreeShipping: false,
-              }}
-            />
-          ))}
+          {productCart.length === 0 ? (
+            <p className="shelf-empty">
+              Añade algunos productos en el carrito. <br />
+              <img
+                style={{ color: "#fff" }}
+                src="/static/img/buy.svg"
+                width="100"
+                alt="productos"
+              ></img>
+            </p>
+          ) : (
+            productCart.map((product, index) => (
+              <CardProduc
+                removeProduc={removeProductCard}
+                key={product.sku + index.toString()}
+                product={product}
+              />
+            ))
+          )}
         </div>
         {/* footer */}
         <div className="float-cart__footer">
           <div className="sub">SUBTOTAL</div>
           <div className="sub-price">
-            <p className="sub-price__val">$ 199.00</p>
-            <small className="sub-price__installment">
-              <span>{`OR UP TO 5 x $ 199.00`}</span>
-            </small>
+            <p className="sub-price__val">
+              PEN{" "}
+              {productCart.length > 0 &&
+                formatPrice(
+                  productCart
+                    .map((product) => product.price)
+                    .reduce((previs, currne) => previs + currne),
+                  "PEN"
+                )}
+            </p>
+            {/* <small className="sub-price__installment"> */}
+            {/* <span>{`OR UP TO 5 x $ 199.00`}</span> */}
+            {/* </small> */}
           </div>
-          <div onClick={() => alert("hola")} className="buy-btn">
+          <div
+            onClick={() =>
+              productCart.length > 0 &&
+              renderChekout({
+                product: productCart,
+                subTotal: parseFloat(
+                  formatPrice(
+                    productCart
+                      .map((product) => product.price)
+                      .reduce((previs, currne) => previs + currne),
+                    "PEN"
+                  )
+                ),
+              })
+            }
+            className="buy-btn"
+          >
             Checkout
           </div>
         </div>

@@ -3,9 +3,11 @@ import Product, { IProduct } from "./product";
 import "./_shoping.style.scss";
 import { makeStyles, Theme } from "@material-ui/core";
 import Esqueleton from "../../squeleton";
+// import { useSelector } from "../../../zviewsnevado/Products/action";
 
 export interface ProductListProps {
   products: IProduct[];
+  addProduct: (product: IProduct) => void;
   loading?: boolean;
 }
 
@@ -23,10 +25,9 @@ const useStales = makeStyles((theme: Theme) => ({
 }));
 
 const ProductList: React.FC<ProductListProps> = (props) => {
-  const { products, loading } = props;
-  console.log("produclist", props);
+  const { products, loading, addProduct } = props;
   const classes = useStales();
-
+  // const { actions } = useSelector();
   if (loading) {
     return (
       <section className={classes.loading}>
@@ -39,7 +40,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
     <section className={classes.root}>
       <div className="shelf-container">
         {products.map((p) => (
-          <Product product={p} key={p.id} />
+          <Product addProduct={addProduct} product={p} key={p.sku} />
         ))}
       </div>
     </section>

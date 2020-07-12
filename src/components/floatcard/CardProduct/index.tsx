@@ -1,13 +1,15 @@
 import * as React from "react";
 import Thumb from "../../thumb";
 import { IProduct } from "../../card/shoping/product";
+import { formatPrice } from "../../../utils/other";
 
 export interface CardProducProps {
   product: IProduct;
+  removeProduc: (uid: string) => void;
 }
 
 const CardProduc: React.SFC<CardProducProps> = (props) => {
-  const { product } = props;
+  const { product, removeProduc } = props;
 
   const classes = ["shelf-item"];
 
@@ -24,13 +26,13 @@ const CardProduc: React.SFC<CardProducProps> = (props) => {
         className="shelf-item__del"
         onMouseOver={() => setMouseOver(true)}
         onMouseOut={() => setMouseOver(false)}
-        onClick={() => alert("removiendo")} //removeProduct(product)}
+        onClick={() => removeProduc(product.id.toString())} //removeProduct(product)}
       />
 
       <Thumb
         style={{ padding: "10px 0px" }}
         className="shelf-item__thumb"
-        src={product.img}
+        src={typeof product.img === "string" ? product.img : ""}
         alt={product.title}
       />
 
@@ -38,11 +40,14 @@ const CardProduc: React.SFC<CardProducProps> = (props) => {
         <p className="title">{product.title}</p>
         <p className="desc">
           {`${product.availableSizes[0]} | ${product.style}`} <br />
-          Quantity: {product.minQuantity}
+          Cantidad: 1
         </p>
       </div>
       <div style={{ marginTop: 10 }} className="shelf-item__price">
-        <p>{`${product.currencyFormat}  ${product.price}`}</p>
+        <p>{`${product.currencyFormat}  ${formatPrice(
+          product.price,
+          product.currencyId
+        )}`}</p>
         <div>
           <button
             disabled={product.minQuantity === 1 ? true : false}

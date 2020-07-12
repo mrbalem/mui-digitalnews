@@ -37,6 +37,7 @@
     "apollo-client": "^2.6.10",
     "apollo-link-error": "^1.1.13",
     "apollo-link-http": "^1.5.17",
+    "clsx": "^1.1.1",
     "easyformui": "^1.2.1",
     "firebase": "^7.15.5",
     "graphql": "^15.1.0",
