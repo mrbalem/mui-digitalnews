@@ -22,16 +22,34 @@ const useStales = makeStyles((theme: Theme) => ({
   loading: {
     width: "95%",
   },
+  notgound: {
+    width: "95%",
+    display: "flex",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "cente",
+  },
 }));
 
 const ProductList: React.FC<ProductListProps> = (props) => {
   const { products, loading, addProduct } = props;
+
   const classes = useStales();
   // const { actions } = useSelector();
-  if (loading) {
+  if (loading || !products) {
     return (
       <section className={classes.loading}>
         <Esqueleton type="shoping" />
+      </section>
+    );
+  }
+
+  if (products.length === 0) {
+    return (
+      <section className={classes.loading}>
+        <div className={classes.notgound}>
+          <h1>no se encontro ningun producto, para esta categoria</h1>
+        </div>
       </section>
     );
   }
@@ -40,7 +58,7 @@ const ProductList: React.FC<ProductListProps> = (props) => {
     <section className={classes.root}>
       <div className="shelf-container">
         {products.map((p) => (
-          <Product addProduct={addProduct} product={p} key={p.sku} />
+          <Product addProduct={addProduct} product={p} key={p.uid} />
         ))}
       </div>
     </section>

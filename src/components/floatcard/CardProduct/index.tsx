@@ -26,13 +26,13 @@ const CardProduc: React.SFC<CardProducProps> = (props) => {
         className="shelf-item__del"
         onMouseOver={() => setMouseOver(true)}
         onMouseOut={() => setMouseOver(false)}
-        onClick={() => removeProduc(product.id.toString())} //removeProduct(product)}
+        onClick={() => removeProduc(product.uid)} //removeProduct(product)}
       />
 
       <Thumb
         style={{ padding: "10px 0px" }}
         className="shelf-item__thumb"
-        src={typeof product.img === "string" ? product.img : ""}
+        src={product.img[0]}
         alt={product.title}
       />
 

@@ -9,7 +9,7 @@ export interface IProduct {
   sku: string;
   title: string;
   category: string;
-  img: string | string[];
+  img: string[];
   quantity: number;
   description: string;
   price: number;
@@ -56,7 +56,7 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
       <Paper className="paper-root" elevation={3}>
         <Thumb
           className="shelf-item__thumb"
-          src={typeof product.img === "string" ? product.img : ""}
+          src={product.img[0]}
           alt={product.title}
           title={product.title}
         />

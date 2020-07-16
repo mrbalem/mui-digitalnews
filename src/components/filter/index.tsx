@@ -2,10 +2,22 @@ import * as React from "react";
 import Checkbox from "../checkbox";
 
 import "./_filter.style.scss";
+import {
+  FormControl,
+  FormLabel,
+  RadioGroup,
+  FormControlLabel,
+  Radio,
+  Divider,
+} from "@material-ui/core";
+import { Skeleton } from "@material-ui/lab";
 
 export interface FilterProps {
   updateFilters: (elements: any[]) => void;
   filters?: Array<any>;
+  categories?: Array<{ uid: string; name: string }>;
+  getCategory?: (categgory: string) => void;
+  initialCategory?: string;
 }
 
 const availableSizes = ["32", "33", "34", "35", "36", "37", "38"];
@@ -17,7 +29,14 @@ const availableSizes = ["32", "33", "34", "35", "36", "37", "38"];
  */
 
 const Filter: React.SFC<FilterProps> = (props) => {
-  const { updateFilters } = props;
+  const { updateFilters, categories, getCategory, initialCategory } = props;
+
+  const [value, setValue] = React.useState(initialCategory || "");
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue((event.target as HTMLInputElement).value);
+    getCategory && getCategory((event.target as HTMLInputElement).value);
+  };
 
   const selectedCheckboxes = new Set();
 
@@ -41,9 +60,49 @@ const Filter: React.SFC<FilterProps> = (props) => {
 
   const createCheckboxes = () => availableSizes.map(createCheckbox);
 
+  //[*]set category
+  React.useEffect(() => {
+    initialCategory && setValue(initialCategory);
+  }, [initialCategory, setValue]);
+
   return (
     <div className="filters">
-      <h4 className="title">Tallas:</h4>
+      <FormControl component="fieldset">
+        <FormLabel className="title">Categorias</FormLabel>
+        <RadioGroup
+          aria-label="gender"
+          name="gender1"
+          value={value}
+          onChange={handleChange}
+        >
+          {!categories && (
+            <>
+              <Skeleton variant="text" width={250} />
+              <Skeleton variant="text" width={250} />
+            </>
+          )}
+
+          {categories &&
+            categories.map((category) => (
+              <FormControlLabel
+                key={category.uid}
+                value={category.uid}
+                control={<Radio />}
+                label={category.name}
+              />
+            ))}
+          {/* <FormControlLabel value="male" control={<Radio />} label="Male" />
+          <FormControlLabel value="other" control={<Radio />} label="Other" /> */}
+        </RadioGroup>
+      </FormControl>
+      <br />
+      <br />
+      <Divider />
+      <br />
+      <FormLabel className="title">Tallas</FormLabel>
+      <br />
+      <br />
+      {/* <h4 className="title">Tallas:</h4> */}
       {createCheckboxes()}
       {/* <GithubStarButton /> */}
     </div>

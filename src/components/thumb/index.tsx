@@ -18,7 +18,7 @@ const Thumb: React.SFC<ThumbProps> = (props) => {
   const { alt, className, src, style, title } = props;
   return (
     <div className={className} style={style}>
-      <img src={src} alt={alt} title={title} />
+      <img height={160} src={src} alt={alt} title={title} />
     </div>
   );
 };
