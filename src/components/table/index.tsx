@@ -2,12 +2,26 @@ import * as React from "react";
 import MaterialTable, {
   MaterialTableProps,
   MTableToolbar,
+  MTableEditField,
 } from "material-table";
-import { AppBar, makeStyles, Theme } from "@material-ui/core";
-
+import {
+  AppBar,
+  makeStyles,
+  Theme,
+  FormControl,
+  FormHelperText,
+  // Tooltip,
+  // IconButton,
+  // Button,
+  // Icon,
+} from "@material-ui/core";
+// import RefreshIcon from "@material-ui/icons/Refresh";
+// import DeleteIcon from "@material-ui/icons/Delete";
 import useBreakpoint from "../../utils/hooks";
 
-export interface TableProps extends MaterialTableProps<any> {}
+export interface TableProps extends MaterialTableProps<any> {
+  error?: boolean;
+}
 
 const useStyle = makeStyles((theme: Theme) => ({
   searchBar: {
@@ -29,13 +43,35 @@ const useStyle = makeStyles((theme: Theme) => ({
 }));
 
 /**
- * @author RonyCB
  * @version 1.0.0
- * @param props
+ * @param obj es el contenido de las campos
+ * @param cantidad la cantidad de campos en el formulario
+ * @param setError Es la accion que determina de que campo esta
+ * vacio
  */
 
+export const captureError = (
+  obj: any,
+  cantidad: number,
+  setError: React.Dispatch<any>
+) => {
+  let isEmpty = false;
+  let keys = Object.keys(obj);
+  if (keys.length < cantidad) {
+    setError(true);
+    return Promise.reject();
+  }
+  Object.values(obj).forEach((e: any) => {
+    if (e.length === 0 || !e || e === "") isEmpty = true;
+  });
+  if (isEmpty) {
+    setError(true);
+    return Promise.reject();
+  }
+};
+
 const Table: React.SFC<TableProps> = (props) => {
-  const { options, columns, data, ...other } = props;
+  const { options, columns, components, data, error, ...other } = props;
   const classes = useStyle();
   //[*] breakppoinst hooks
   const bre = useBreakpoint();
@@ -55,6 +91,23 @@ const Table: React.SFC<TableProps> = (props) => {
             </AppBar>
           );
         },
+        EditField: (props) => {
+          return (
+            <FormControl error={error && !props.value ? true : false}>
+              <MTableEditField
+                {...props}
+                id={`component-${props.columnDef.title}`}
+                aria-describedby="component-error-text"
+              />
+              {error && !props.value && (
+                <FormHelperText id="component-error-text">
+                  Campo nece...
+                </FormHelperText>
+              )}
+            </FormControl>
+          );
+        },
+        ...components,
         //     Actions: (props) => {
         //       console.log(props);
         //       const getUser = (action: any, data: any) => {
@@ -143,7 +196,7 @@ const Table: React.SFC<TableProps> = (props) => {
           lastTooltip: "Última página",
         },
         header: {
-          actions: "acciones",
+          actions: "Acciones",
         },
       }}
     />
