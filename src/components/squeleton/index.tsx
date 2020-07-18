@@ -4,7 +4,7 @@ import { Skeleton } from "@material-ui/lab";
 import { createRangeArray } from "../../utils/other";
 
 export interface EsqueletonProps {
-  type: string;
+  type: "shoping" | "card";
   quantity?: number;
 }
 
@@ -48,6 +48,21 @@ const Esqueleton: React.SFC<EsqueletonProps> = (props) => {
             </Grid>
           ))}
         </Content>
+      );
+
+    case "card":
+      return (
+        <>
+          {createRangeArray(1, quantity, 1).map((e, index) => (
+            <Skeleton
+              style={{ background: "#ff3366", margin: 10 }}
+              key={(e + index).toString()}
+              variant="rect"
+              width="31.5%"
+              height={200}
+            />
+          ))}
+        </>
       );
 
     default:
