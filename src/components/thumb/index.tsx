@@ -6,6 +6,7 @@ export interface ThumbProps {
   className?: string;
   src: string;
   style?: React.CSSProperties;
+  height?: number;
 }
 
 /**
@@ -15,10 +16,10 @@ export interface ThumbProps {
  */
 
 const Thumb: React.SFC<ThumbProps> = (props) => {
-  const { alt, className, src, style, title } = props;
+  const { alt, className, height, src, style, title } = props;
   return (
     <div className={className} style={style}>
-      <img height={160} src={src} alt={alt} title={title} />
+      <img height={height} src={src} alt={alt} title={title} />
     </div>
   );
 };
