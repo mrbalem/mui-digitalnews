@@ -2,6 +2,7 @@ import * as React from "react";
 import Thumb from "../../thumb";
 import { IProduct } from "../../card/shoping/product";
 import { formatPrice } from "../../../utils/other";
+import clsx from "clsx";
 
 export interface CardProducProps {
   product: IProduct;
@@ -11,17 +12,13 @@ export interface CardProducProps {
 const CardProduc: React.SFC<CardProducProps> = (props) => {
   const { product, removeProduc } = props;
 
-  const classes = ["shelf-item"];
-
   //[*] state is MouseOver
   const [isMouseOver, setMouseOver] = React.useState(false);
 
-  if (!!isMouseOver) {
-    classes.push("shelf-item--mouseover");
-  }
-
   return (
-    <div className={classes.join(" ")}>
+    <div
+      className={clsx("shelf-item", !!isMouseOver && "shelf-item--mouseover")}
+    >
       <div
         className="shelf-item__del"
         onMouseOver={() => setMouseOver(true)}
@@ -36,7 +33,7 @@ const CardProduc: React.SFC<CardProducProps> = (props) => {
         alt={product.title}
       />
 
-      <div className="shelf-item__details">
+      <div style={{ textAlign: "initial" }} className="shelf-item__details">
         <p className="title">{product.title}</p>
         <p className="desc">
           {`${product.availableSizes[0]} | ${product.style}`} <br />
