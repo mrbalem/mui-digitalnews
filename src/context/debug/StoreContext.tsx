@@ -11,7 +11,7 @@ interface IContextProps {
 const StoreComponent = createContext({} as IContextProps);
 
 export interface state {
-  [key: number]: any;
+  [key: string]: any;
 }
 
 interface StoreProviderCPProps {
