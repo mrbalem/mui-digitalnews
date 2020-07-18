@@ -167,7 +167,11 @@ const useStyles = makeStyles(({ palette, breakpoints, spacing }) => ({
   },
 }));
 
-const ParallaxCarousel = () => {
+export interface IParallaxCarousel {
+  datas: Array<{ uid: string; title: string; img: string }>;
+}
+
+const ParallaxCarousel: React.FC<IParallaxCarousel> = ({ datas }) => {
   const classes = useStyles();
   const arrowStyles = useArrowDarkButtonStyles();
   const createStyle = (slideIndex: number, fineIndex: number) => {
@@ -208,27 +212,31 @@ const ParallaxCarousel = () => {
     </>
   );
   const renderChildren = ({ injectStyle, fineIndex }: any) =>
-    data.map(({ id, title, subtitle, image }, i) => (
-      <div key={id} className={classes.slide}>
-        <Typography
-          noWrap
-          className={cx(classes.text, classes.title)}
-          style={{ ...injectStyle(i, 60), ...createStyle(i, fineIndex) }}
-        >
-          {title}
-        </Typography>
-        <Typography
-          noWrap
-          className={cx(classes.text, classes.subtitle)}
-          style={{ ...injectStyle(i, 40), ...createStyle(i, fineIndex) }}
-        >
-          {subtitle}
-        </Typography>
-        <div className={classes.imageContainer}>
-          <img className={classes.image} src={image} alt={"slide"} />
+    datas ? (
+      datas.map(({ uid, title, img }, i) => (
+        <div key={uid} className={classes.slide}>
+          <Typography
+            noWrap
+            className={cx(classes.text, classes.title)}
+            style={{ ...injectStyle(i, 60), ...createStyle(i, fineIndex) }}
+          >
+            {title}
+          </Typography>
+          <Typography
+            noWrap
+            className={cx(classes.text, classes.subtitle)}
+            style={{ ...injectStyle(i, 40), ...createStyle(i, fineIndex) }}
+          >
+            Nevado Store
+          </Typography>
+          <div className={classes.imageContainer}>
+            <img className={classes.image} src={img} alt={title} />
+          </div>
         </div>
-      </div>
-    ));
+      ))
+    ) : (
+      <p>Loading...</p>
+    );
   return (
     <div className={classes.root}>
       <ParallaxSlide renderElements={renderElements}>
