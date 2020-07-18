@@ -61,7 +61,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
       let user = auth().currentUser;
       if (user) {
         setLoading(false);
-        actions.signInAdmin(user.uid);
+        actions.signIn(user.uid);
         // redired && history.push(redired(user.uid));
       } else {
         setLoading(false);
@@ -88,6 +88,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
           });
           break;
         default:
+          console.error(error);
           alert(error.code);
       }
     }
