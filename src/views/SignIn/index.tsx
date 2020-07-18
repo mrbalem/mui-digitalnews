@@ -20,7 +20,7 @@ const cover =
 
 export interface SingInProps extends WithRootConnet {
   /**
-   * identifica la porta del componente
+   * identifica la porta del components
    */
   portada: { title: string; subtitle: string; message: string };
   /**
@@ -36,14 +36,14 @@ export interface SingInProps extends WithRootConnet {
 /**
  * @author Rony cb
  * @version 1.0.0
- * @param props pros necesarios para le funcionamiento de session de inicio
+ * @param props props necessary para le funcionamiento de session de inicio
  */
 
 const SingIn: React.SFC<SingInProps> = (props) => {
   const classes = useSignInStyles({ cover: props.cover || cover });
   const { portada, title, actions } = props;
 
-  //[*] hoooks para mostrar el error
+  //[*] hooks show the error
   const [error, setError] = React.useState({ open: false, message: "" });
 
   //[*] hooks active loading for onsubmit
@@ -62,7 +62,6 @@ const SingIn: React.SFC<SingInProps> = (props) => {
       if (user) {
         setLoading(false);
         actions.signIn(user.uid);
-        // redired && history.push(redired(user.uid));
       } else {
         setLoading(false);
         setError({
