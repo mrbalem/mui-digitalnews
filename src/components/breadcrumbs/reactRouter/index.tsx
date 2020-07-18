@@ -29,12 +29,24 @@ const BreadCrumbsRoute: React.SFC<BreadCrumbsRouteProps> = (props) => {
         <HomeIcon style={{ width: 20, height: 20, marginRight: 1 }} />
         Inicio
       </LinkRoute>
-      {pathnames.map((ele: any, index: number) => (
-        <LinkRoute color="inherit" key={index.toString() + ele} to={`/${ele}`}>
-          {ele}
-        </LinkRoute>
-      ))}
-      <Typography color="textPrimary">{name}</Typography>
+      {pathnames.map(
+        (ele: any, index: number) => (
+          // index === 0 ? (
+          //   <LinkRoute
+          //     color="inherit"
+          //     key={index.toString() + ele}
+          //     to={`/${ele}`}
+          //   >
+          //     {ele}
+          //   </LinkRoute>
+          // ) : (
+          <Typography key={index.toString() + ele} color="textPrimary">
+            {ele}
+          </Typography>
+        )
+        // )
+      )}
+      {/* <Typography color="textPrimary">{name}</Typography> */}
     </Breadcrumbs>
   );
 };
