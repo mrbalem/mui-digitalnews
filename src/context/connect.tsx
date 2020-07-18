@@ -2,6 +2,7 @@ import React from "react";
 import { StoreContext } from "./StoreContext";
 import { state } from "./Reducer";
 import { RouteComponentProps } from "react-router-dom";
+import { IActions } from "./Action";
 
 export interface WithRootConnet extends RouteComponentProps {
   /**
@@ -11,7 +12,7 @@ export interface WithRootConnet extends RouteComponentProps {
   /**
    * Establecemos las accion para nuestro componentes
    */
-  actions: any;
+  actions: IActions;
 }
 
 /**
