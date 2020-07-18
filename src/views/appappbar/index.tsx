@@ -24,7 +24,7 @@ export interface AppAppBarProps {
   /**
    * Especifica la posicion de los items de nav
    */
-  centerItems?: Array<{ link: string; name: string }>;
+  centerItems?: Array<{ link: string; name: string; actived: boolean }>;
 }
 
 /**
@@ -38,7 +38,7 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
   //[*] get classes
   const { title, color, rightItem, centerItems, position = "static" } = props;
   //[*] hooks active link
-  const [actived, setActive] = React.useState(0);
+  // const [actived, setActive] = React.useState(0);
 
   // const handleClick = (
   //   event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -89,11 +89,11 @@ const AppAppBar: React.SFC<AppAppBarProps> = (props) => {
                 color="inherit"
                 variant="h6"
                 underline="none"
-                onClick={() => setActive(index)}
+                // onClick={() => setActive(index)}
                 to={ele.link}
                 className={clsx(
                   classes.rightLink,
-                  actived === index && classes.linkSecondary
+                  ele.actived && classes.linkSecondary
                 )}
               >
                 {ele.name}
