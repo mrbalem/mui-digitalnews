@@ -87,6 +87,13 @@ const SingIn: React.SFC<SingInProps> = (props) => {
               "La contraseña no es válida o el usuario no tiene una contraseña.",
           });
           break;
+        case "auth/too-many-requests":
+          setError({
+            open: true,
+            message:
+              "Se intento ingresar mas de 4 veces, por favor intentalo mas tarde.",
+          });
+          break;
         default:
           console.error(error);
           alert(error.code);
@@ -111,7 +118,9 @@ const SingIn: React.SFC<SingInProps> = (props) => {
           className={classes.item}
         >
           <div className={"DL01-cover"} />
+
           <div className={"DL01-content"}>
+            {/* <img width={200} height={20} src="/static/logos/nevado-logo.png" /> */}
             <Typography variant={"h3"} className={"DL01-brand"} gutterBottom>
               {portada.title}
             </Typography>
@@ -136,17 +145,11 @@ const SingIn: React.SFC<SingInProps> = (props) => {
         className={classes.form}
       >
         <div className={"DL01-form"}>
-          {isLoading && (
-            <LinearProgress
-              style={{ position: "absolute", top: 0, right: 0, width: "41.7%" }}
-            />
-          )}
+          {isLoading && <LinearProgress className={classes.progress} />}
           <img
             alt={"logo"}
             className={"DL01-logo"}
-            src={
-              "https://images.vexels.com/media/users/3/144356/isolated/preview/52fb168f1bd3abf7e97a8e9bfdac331d-speed-car-logo-by-vexels.png"
-            }
+            src={"/static/logos/nevado-logo.png"}
           />
           <Typography color={"textSecondary"}>{title}</Typography>
           <br />
@@ -197,6 +200,7 @@ const SingIn: React.SFC<SingInProps> = (props) => {
         </div>
       </Grid>
       <MuiSnackbar
+        error
         open={error.open}
         onClose={handleClose}
         message={error.message}

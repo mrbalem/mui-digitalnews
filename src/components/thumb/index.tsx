@@ -17,9 +17,17 @@ export interface ThumbProps {
 
 const Thumb: React.SFC<ThumbProps> = (props) => {
   const { alt, className, height, src, style, title } = props;
+
   return (
     <div className={className} style={style}>
-      <img height={height} src={src} alt={alt} title={title} />
+      <img
+        loading="lazy"
+        width={300}
+        height={height === 0 ? undefined : height}
+        src={src || "https://spmki.com/images/default-img.png"}
+        alt={alt}
+        title={title}
+      />
     </div>
   );
 };

@@ -56,6 +56,7 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
       <Paper className="paper-root" elevation={3}>
         <Thumb
           className="shelf-item__thumb"
+          height={parseInt(product.style || "0")}
           src={product.img[0]}
           alt={product.title}
           title={product.title}

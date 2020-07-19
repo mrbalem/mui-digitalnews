@@ -35,7 +35,15 @@ const SignInStyle = ({ breakpoints, palette }: Theme) => {
         opacity: 0.7,
       },
     }),
-
+    progress: {
+      position: "absolute",
+      top: 0,
+      right: 0,
+      width: "41.7%",
+      [breakpoints.down("xs")]: {
+        width: "100%",
+      },
+    },
     item: ({ cover }: SignInStyleProps) => ({
       textAlign: "left",
       background: `url(${cover})`,
@@ -77,12 +85,12 @@ const SignInStyle = ({ breakpoints, palette }: Theme) => {
         },
       },
       "& .DL01-logo": {
-        width: 100,
-        height: 100,
+        width: 160,
+        height: 70,
         objectFit: "cover",
         [breakpoints.only("xs")]: {
-          width: 60,
-          height: 60,
+          width: 150,
+          height: 70,
         },
       },
       "& .DL01-signUp": {

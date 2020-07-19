@@ -106,6 +106,9 @@ const useStyle = makeStyles((theme: Theme) => ({
     backgroundColor: theme.palette.secondary.light,
     backgroundImage: "url('/static/img/productCurvyLines.png')",
     overflow: "hidden",
+    [theme.breakpoints.down("xs")]: {
+      width: "100%",
+    },
   },
   loading: {
     width: "95%",

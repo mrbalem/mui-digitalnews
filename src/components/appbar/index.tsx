@@ -29,7 +29,7 @@ type Props = MuiAppBarProps & WithStyles<typeof styles>;
  * @version 1.0.0
  * @param props more information -> https://material-ui.com/api/app-bar/#appbar-api
  */
-const MuiAppBar: React.SFC<Props> = (props) => {
+const MuiAppBar: React.FC<Props> = (props) => {
   //[*] recuperamos los props
   const { classes, ...rest } = props;
   return <AppBar className={classes.root} elevation={0} {...rest} />;

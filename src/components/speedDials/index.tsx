@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       minWidth: 205,
     },
     exampleWrapper: {
+      zIndex: 1000,
       position: "fixed",
       bottom: 0,
       right: 10,
@@ -71,6 +72,7 @@ export default function SpeedDials() {
       >
         {actions.map((action) => (
           <SpeedDialAction
+            style={{ zIndex: 6000 }}
             classes={{
               staticTooltipLabel: classes.tooltipLabel,
             }}

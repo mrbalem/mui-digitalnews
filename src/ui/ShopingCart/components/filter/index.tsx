@@ -9,7 +9,7 @@ import {
   Radio,
   Divider,
 } from "@material-ui/core";
-import { Skeleton } from "@material-ui/lab";
+import Esqueleton from "../../../../components/squeleton";
 
 export interface FilterProps {
   updateFilters: (elements: any[]) => void;
@@ -27,7 +27,7 @@ const availableSizes = ["32", "33", "34", "35", "36", "37", "38"];
  * @param props
  */
 
-const Filter: React.SFC<FilterProps> = (props) => {
+const Filter: React.FC<FilterProps> = (props) => {
   const { updateFilters, categories, getCategory, initialCategory } = props;
 
   const [value, setValue] = React.useState(initialCategory || "");
@@ -74,12 +74,7 @@ const Filter: React.SFC<FilterProps> = (props) => {
           value={value}
           onChange={handleChange}
         >
-          {!categories && (
-            <>
-              <Skeleton variant="text" width={250} />
-              <Skeleton variant="text" width={250} />
-            </>
-          )}
+          {!categories && <Esqueleton quantity={4} type="category" />}
 
           {categories &&
             categories.map((category) => (

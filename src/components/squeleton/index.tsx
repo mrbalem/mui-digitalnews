@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Paper, Grid } from "@material-ui/core";
+import { Paper, Grid, makeStyles, Theme } from "@material-ui/core";
 import { Skeleton } from "@material-ui/lab";
 import { createRangeArray } from "../../utils/other";
 
 export interface EsqueletonProps {
-  type: "shoping" | "card";
+  type: "shoping" | "card" | "appbar" | "category";
   quantity?: number;
+  background?: "primaryDark" | "secondaryDark" | "inforDark";
 }
 
 const Content: React.SFC<{ children: React.ReactNode }> = (props) => (
@@ -14,9 +15,21 @@ const Content: React.SFC<{ children: React.ReactNode }> = (props) => (
   </Grid>
 );
 
-const Esqueleton: React.SFC<EsqueletonProps> = (props) => {
-  const { type, quantity = 12 } = props;
+const useStyle = makeStyles((theme: Theme) => ({
+  primaryDark: {
+    background: theme.palette.primary.dark,
+  },
+  secondaryDark: {
+    background: theme.palette.secondary.dark,
+  },
+  inforDark: {
+    background: theme.palette.info.dark,
+  },
+}));
 
+const Esqueleton: React.SFC<EsqueletonProps> = (props) => {
+  const { type, quantity = 12, background = "secondaryDark" } = props;
+  const classes = useStyle();
   switch (type) {
     case "shoping":
       return (
@@ -30,20 +43,42 @@ const Esqueleton: React.SFC<EsqueletonProps> = (props) => {
               xs={6}
             >
               <Paper>
-                <Skeleton variant="rect" width={"100%"} height={118} />
+                <Skeleton
+                  className={classes[background]}
+                  variant="rect"
+                  width={"100%"}
+                  height={118}
+                />
                 <div className="center-flex">
-                  <Skeleton variant="text" width={"80%"} />
+                  <Skeleton
+                    className={classes[background]}
+                    variant="text"
+                    width={"80%"}
+                  />
                 </div>
                 <div className="center-flex">
-                  <Skeleton variant="text" width={"30%"} />
+                  <Skeleton
+                    className={classes[background]}
+                    variant="text"
+                    width={"30%"}
+                  />
                 </div>
                 <div className="center-flex">
-                  <Skeleton variant="text" width={"50%"} />
+                  <Skeleton
+                    className={classes[background]}
+                    variant="text"
+                    width={"50%"}
+                  />
                 </div>
               </Paper>
               <br />
               <Paper>
-                <Skeleton variant="rect" width={"100%"} height={30} />
+                <Skeleton
+                  className={classes[background]}
+                  variant="rect"
+                  width={"100%"}
+                  height={30}
+                />
               </Paper>
             </Grid>
           ))}
@@ -55,11 +90,48 @@ const Esqueleton: React.SFC<EsqueletonProps> = (props) => {
         <>
           {createRangeArray(1, quantity, 1).map((e, index) => (
             <Skeleton
-              style={{ background: "#ff3366", margin: 10 }}
+              className={classes[background]}
+              style={{ margin: 10 }}
               key={(e + index).toString()}
               variant="rect"
               width="31.5%"
               height={200}
+            />
+          ))}
+        </>
+      );
+
+    case "appbar":
+      return (
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          {createRangeArray(1, quantity, 1).map((e, index) => (
+            <Skeleton
+              className={classes[background]}
+              style={{ margin: 10 }}
+              height={30}
+              variant="text"
+              width={100}
+              key={(e + index).toString()}
+            />
+          ))}
+        </div>
+      );
+
+    case "category":
+      return (
+        <>
+          {createRangeArray(1, quantity, 1).map((e, index) => (
+            <Skeleton
+              key={(e + index).toString()}
+              className={classes[background]}
+              variant="text"
+              width={250}
             />
           ))}
         </>

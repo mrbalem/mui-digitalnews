@@ -1,4 +1,4 @@
-import { Theme } from "@material-ui/core";
+import { Theme, createStyles } from "@material-ui/core";
 import { toolbarStyles } from "../../../components";
 
 export type AppAppBarStyleProps = {
@@ -7,14 +7,46 @@ export type AppAppBarStyleProps = {
 
 export type AppAppBarStyleClassKey = keyof ReturnType<typeof AppAppBarStyles>;
 
-const AppAppBarStyles = (theme: Theme) => {
-  return {
-    title: ({ titleSize = 24 }) => ({
+const AppAppBarStyles = (theme: Theme) =>
+  createStyles({
+    title: ({ titleSize = 24 }: AppAppBarStyleProps) => ({
       fontSize: titleSize,
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+      },
+      [theme.breakpoints.up("md")]: {
+        display: "block",
+      },
     }),
     placeholder: toolbarStyles(theme).root,
     toolbar: {
       justifyContent: "space-between",
+    },
+
+    tapsRoot: {
+      minWidth: 72,
+      marginRight: theme.spacing(1),
+    },
+
+    tabs: {
+      [theme.breakpoints.down("xs")]: {
+        maxWidth: 400,
+        paddingRight: 20,
+      },
+    },
+    logoActive: {
+      [theme.breakpoints.down("xs")]: {
+        width: "100%",
+        textAlign: "center",
+      },
+      [theme.breakpoints.up("md")]: {
+        display: "none",
+      },
+    },
+    logoImg: {
+      [theme.breakpoints.down("md")]: {
+        display: "none",
+      },
     },
     left: {
       flex: 1,
@@ -39,7 +71,7 @@ const AppAppBarStyles = (theme: Theme) => {
       display: "flex",
       paddingBottom: 10,
       [theme.breakpoints.down("xs")]: {
-        display: "none",
+        display: "block",
       },
     },
     heightNav: {
@@ -48,7 +80,6 @@ const AppAppBarStyles = (theme: Theme) => {
         height: 64,
       },
     },
-  };
-};
+  });
 
 export default AppAppBarStyles;
