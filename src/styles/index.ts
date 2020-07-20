@@ -9,6 +9,7 @@ import styleProductHowItWorks, {
 import styleProductCta, { useProductCtaStyle } from "./views/ProductCTA";
 import styleAppFooter, { useAppFooterStyle } from "./views/AppFooter";
 import styleSignIn, { useSignInStyles } from "./views/SingIn";
+import { useAppDashStyle } from "./views/AppAppDashboar";
 
 // export Components
 import {
@@ -23,6 +24,7 @@ export {
   useAppAppBarStyles,
   useDotIndicatorStyles,
   dotIndicatorStyles,
+  useAppDashStyle,
   styleProductHowItWorks,
   styleProductHero,
   useProductCategories,
