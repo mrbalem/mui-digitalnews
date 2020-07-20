@@ -21,6 +21,7 @@ import useBreakpoint from "../../utils/hooks";
 
 export interface TableProps extends MaterialTableProps<any> {
   error?: boolean;
+  placeholder?: string;
 }
 
 const useStyle = makeStyles((theme: Theme) => ({
@@ -70,8 +71,21 @@ export const captureError = (
   }
 };
 
+/**
+ * @author Rony cb
+ * @version 1.0.0
+ * @param props
+ */
 const Table: React.SFC<TableProps> = (props) => {
-  const { options, columns, components, data, error, ...other } = props;
+  const {
+    options,
+    columns,
+    components,
+    placeholder,
+    data,
+    error,
+    ...other
+  } = props;
   const classes = useStyle();
   //[*] breakppoinst hooks
   const bre = useBreakpoint();
@@ -183,6 +197,7 @@ const Table: React.SFC<TableProps> = (props) => {
         toolbar: {
           searchTooltip: "buscar",
           searchPlaceholder:
+            placeholder ||
             "Buscar por dirección de correo electrónico, número de teléfono o UID de usuario",
         },
         pagination: {
