@@ -11,4 +11,5 @@ export { default as MuiTextField } from "./textfield";
 export { default as MuiPaper } from "./paper";
 export { default as MuTable } from "./table";
 export { default as MuiEsqueleton } from "./squeleton";
+export { default as MuiModal } from "./modal";
 export { toolbarStyles };

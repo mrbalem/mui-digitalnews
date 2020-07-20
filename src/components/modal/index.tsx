@@ -39,7 +39,7 @@ const useStyle = makeStyles(({ palette }: Theme) => ({
   },
 }));
 
-export interface TypeModalProps {
+export interface MuiModalProps {
   open: boolean;
   title?: string;
   titleBackground?: background;
@@ -49,7 +49,7 @@ export interface TypeModalProps {
   direction?: "down" | "up" | "left" | "right";
 }
 
-const TypeModal: React.SFC<TypeModalProps> = (props) => {
+const MuiModal: React.SFC<MuiModalProps> = (props) => {
   const {
     open,
     handleClose,
@@ -73,7 +73,7 @@ const TypeModal: React.SFC<TypeModalProps> = (props) => {
       BackdropProps={{ timeout: 500 }}
     >
       <Slide style={{ outline: "none" }} in={open} direction={direction}>
-        <div>
+        <div style={{ width: "50%" }}>
           <Paper
             className="paper-movil"
             elevation={6}
@@ -85,14 +85,16 @@ const TypeModal: React.SFC<TypeModalProps> = (props) => {
             {title && (
               <>
                 <div className={classes[titleBackground]}>
-                  <h2 id="modal-title">{title}</h2>
-                  <IconButton
-                    size="medium"
-                    color="inherit"
-                    onClick={handleClose}
-                  >
-                    <CloseIcon />
-                  </IconButton>
+                  <div className="flex-center">
+                    <h2 id="modal-title">{title}</h2>
+                    <IconButton
+                      size="medium"
+                      color="inherit"
+                      onClick={handleClose}
+                    >
+                      <CloseIcon />
+                    </IconButton>
+                  </div>
                 </div>
                 <br />
               </>
@@ -105,4 +107,4 @@ const TypeModal: React.SFC<TypeModalProps> = (props) => {
   );
 };
 
-export default TypeModal;
+export default MuiModal;
