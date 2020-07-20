@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     tooltipLabel: {
       minWidth: 205,
+      [theme.breakpoints.down("xs")]: {
+        minWidth: 220,
+      },
     },
     exampleWrapper: {
       zIndex: 1000,
@@ -37,10 +40,26 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 const actions = [
-  { icon: <FeedbackIcon />, name: "Enviar Feedback" },
-  { icon: <EmailIcon />, name: "Enviar correo electronico" },
-  { icon: <FacebookIcon />, name: "Contactar por Facebook" },
-  { icon: <WhatsAppIcon />, name: "Contactar por whatsApp" },
+  {
+    icon: <FeedbackIcon />,
+    name: "Enviar Feedback",
+    onClick: undefined,
+  },
+  {
+    icon: <EmailIcon />,
+    name: "Enviar correo electronico",
+    onClick: undefined,
+  },
+  {
+    icon: <FacebookIcon />,
+    name: "Contactar por Facebook",
+    onClick: process.env.REACT_APP_LINK_MESSENGER,
+  },
+  {
+    icon: <WhatsAppIcon />,
+    name: "Contactar por whatsApp",
+    onClick: process.env.REACT_APP_LINK_WHATSAPP,
+  },
 ];
 
 /**
@@ -52,8 +71,11 @@ const actions = [
 export default function SpeedDials() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => {
+  const handleClose = (param: any) => {
     setOpen(false);
+    if (typeof param === "string" && param) {
+      window.open(param, "_blanck");
+    }
   };
   const handleOpen = () => {
     setOpen(true);
@@ -80,7 +102,7 @@ export default function SpeedDials() {
             icon={action.icon}
             tooltipTitle={action.name}
             tooltipOpen
-            onClick={handleClose}
+            onClick={() => handleClose(action.onClick)}
           />
         ))}
       </SpeedDial>
