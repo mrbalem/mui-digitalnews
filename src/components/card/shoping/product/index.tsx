@@ -18,8 +18,6 @@ export interface IProduct {
   availableSizes: Array<string>;
   availableColor: Array<string>;
   isOffertShipping?: boolean;
-  priceMayor?: number;
-  minQuantity?: number;
   style?: string;
 }
 
@@ -41,10 +39,10 @@ const Shoping: React.SFC<ShopingProps> = (props) => {
 
     productInstallment = (
       <div className="installment">
-        <span>o {product.minQuantity || product.isOffertShipping} x </span>
+        <span>o {product.quantity || product.isOffertShipping} x </span>
         <b>
           {product.currencyFormat}
-          {formatPrice(product.priceMayor || product.price, product.currencyId)}
+          {formatPrice(product.price, product.currencyId)}
         </b>
       </div>
     );
