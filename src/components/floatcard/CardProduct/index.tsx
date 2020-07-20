@@ -47,7 +47,7 @@ const CardProduc: React.SFC<CardProducProps> = (props) => {
         )}`}</p>
         <div>
           <button
-            disabled={product.minQuantity === 1 ? true : false}
+            disabled={product.quantity === 1 ? true : false}
             className="change-product-button"
           >
             -
