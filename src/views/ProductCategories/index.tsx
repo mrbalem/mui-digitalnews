@@ -5,7 +5,7 @@ import { useProductCategories } from "../../styles";
 
 export interface ProductCategoriesProps {
   title: string;
-  images: Array<{ uid: string; name: string; url: string; width: string }>;
+  images: Array<{ uid: string; name: string; img: string; width: string }>;
 }
 
 /**
@@ -35,7 +35,7 @@ const ProductCategories: React.SFC<ProductCategoriesProps> = (props) => {
               <div
                 className={classes.imageSrc}
                 style={{
-                  backgroundImage: `url(${image.url})`,
+                  backgroundImage: `url(${image.img})`,
                 }}
               />
               <div className={classes.imageBackdrop} />
