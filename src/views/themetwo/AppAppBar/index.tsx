@@ -103,7 +103,7 @@ function Header(props: HeaderProps) {
           <Grid container alignItems="center" spacing={1}>
             <Grid item xs>
               <Typography color="inherit" variant="h5" component="h1">
-                {getParameter("page").toLocaleUpperCase()}
+                {getParameter("page") || "Title"}
               </Typography>
             </Grid>
             <Grid item>
