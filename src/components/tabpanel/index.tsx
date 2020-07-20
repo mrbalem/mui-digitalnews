@@ -14,6 +14,7 @@ const TabPanel: React.SFC<TabPanelProps> = (props) => {
   const { children, value, index, ...other } = props;
   return (
     <div
+      style={{ width: "100%" }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}
