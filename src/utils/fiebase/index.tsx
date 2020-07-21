@@ -1,8 +1,8 @@
 /** @format */
 import firebase from "firebase/app";
 import "firebase/auth";
-import "firebase/messaging";
-
+// import "firebase/messaging";
+import "firebase/storage";
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
   authDomain: process.env.REACT_APP_AUTHDOMAIN,
@@ -31,4 +31,5 @@ firebase.initializeApp(firebaseConfig);
 //   );
 
 export const { auth } = firebase;
+export const { storage } = firebase;
 export const { messaging } = firebase;
