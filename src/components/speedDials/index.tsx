@@ -5,11 +5,9 @@ import SpeedDialIcon from "@material-ui/lab/SpeedDialIcon";
 import WhatsAppIcon from "@material-ui/icons/WhatsApp";
 import SpeedDialAction from "@material-ui/lab/SpeedDialAction";
 import EmailIcon from "@material-ui/icons/Email";
-import { Backdrop, FormControl, Button } from "@material-ui/core";
+import { Backdrop } from "@material-ui/core";
 import FacebookIcon from "@material-ui/icons/Facebook";
 import FeedbackIcon from "@material-ui/icons/Feedback";
-import MuiModal from "../modal";
-import { Forms } from "easyformui";
 import Email from "./ui/email";
 import Feedback from "./ui/feeback";
 
