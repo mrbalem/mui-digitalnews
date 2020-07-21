@@ -14,31 +14,36 @@ const styles = (theme: Theme) =>
       margin: "auto",
       overflow: "hidden",
     },
-    searchBar: {
-      borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
-    },
-    searchInput: {
-      fontSize: theme.typography.fontSize,
-    },
-    block: {
-      display: "block",
-    },
-    addUser: {
-      marginRight: theme.spacing(1),
-    },
-    contentWrapper: {
-      margin: "40px 16px",
-    },
+    // searchBar: {
+    //   borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+    // },
+    // searchInput: {
+    //   fontSize: theme.typography.fontSize,
+    // },
+    // block: {
+    //   display: "block",
+    // },
+    // addUser: {
+    //   marginRight: theme.spacing(1),
+    // },
+    // contentWrapper: {
+    //   margin: "40px 16px",
+    // },
   });
 
 export interface ContentProps extends WithStyles<typeof styles> {
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 function Content(props: ContentProps) {
-  const { children, classes } = props;
+  const { children, classes, style } = props;
 
-  return <Paper className={classes.paper}>{children}</Paper>;
+  return (
+    <Paper style={style} className={classes.paper}>
+      {children}
+    </Paper>
+  );
 }
 
 export default withStyles(styles)(Content);
