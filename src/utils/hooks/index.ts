@@ -6,6 +6,7 @@
 
 import { useState, useEffect } from "react";
 import throttle from "lodash/throttle";
+import { storage } from "../fiebase";
 
 /**
  * @description useKey es un hook que nos permite comparar la pulsaciones de las teclas.
@@ -64,7 +65,7 @@ const useBreakpoint = (): breakpoints => {
   );
 
   useEffect(() => {
-    const calcInnerWidth = throttle(function() {
+    const calcInnerWidth = throttle(function () {
       setBrkPnt(getDeviceConfig(window.innerWidth));
     }, 200);
     window.addEventListener("resize", calcInnerWidth);
@@ -72,6 +73,38 @@ const useBreakpoint = (): breakpoints => {
   }, []);
 
   return brkPnt;
+};
+
+/**
+ * @param path la ruta de la imagen
+ * @description esta función nos permite descargar url de la imagen alamcenada
+ * en storage
+ */
+export const downloadUrl = async (path: string) => {
+  const url = await storage().ref().child(path).getDownloadURL();
+  return url;
+};
+
+/**
+ * @param element elemnto file, ArrayBuffer img
+ * @param path es el paht donde se almacena la imagen
+ */
+
+export const setImageStorage = async (
+  element: Blob | Uint8Array | ArrayBuffer,
+  path: string
+) => {
+  try {
+    const response = await storage().ref().child(path).put(element);
+    if (response) {
+      let url = await downloadUrl(path);
+      return { status: 200, data: url };
+    }
+    return { status: 404, data: null };
+  } catch (error) {
+    console.error("storage-firebase:", error);
+    return { status: 500, data: null };
+  }
 };
 
 // const useAbortableEffect = (
